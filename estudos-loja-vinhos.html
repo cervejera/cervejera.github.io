@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco de uma loja de vinhos · Gustavo Cervejera</title>
+    <meta name="description" content="Um banco pequeno pra uma loja de vinhos, do modelo até o usuário que só enxerga o que precisa.">
+    <!-- prévia ao compartilhar (linkedin, whatsapp). ao hospedar, troque og:image por um endereço completo -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Banco de uma loja de vinhos · Gustavo Cervejera">
+    <meta property="og:description" content="Um banco pequeno pra uma loja de vinhos, do modelo até o usuário que só enxerga o que precisa.">
+    <meta property="og:image" content="img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina coluna">
+
+        <!-- topo do post -->
+        <header class="intro">
+            <a class="mono voltar" href="projetos.html">&larr; projetos</a>
+            <p class="mono">banco de dados · somativa 2 · pucpr 2026 · 3 min de leitura</p>
+            <h1 class="titulo-post">Banco de uma loja de vinhos</h1>
+            <p class="papel">Um banco pequeno pra uma loja de vinhos, do modelo até o usuário que só enxerga o que precisa.</p>
+        </header>
+
+        <!-- resumo pra quem lê rápido -->
+        <div class="resumo">
+            <div><p class="mono">problema</p><p>Montar o banco de uma loja de vinhos, do modelo até o controle de acesso.</p></div>
+            <div><p class="mono">meu papel</p><p>Modelei as tabelas, populei, escrevi as consultas e criei o usuário com permissão por coluna.</p></div>
+            <div><p class="mono">resultado</p><p>3 tabelas ligadas por chave estrangeira, consulta com 2 JOINs e usuário limitado a 40 consultas por hora.</p></div>
+        </div>
+
+        <!-- capa: troque por <img src="img/..." alt="..."> (1920x1080) -->
+        <div class="capa capa-grande" data-nome="loja de vinhos"></div>
+
+        <article class="post">
+            <h2>O tema</h2>
+            <p>A Somativa 2 de Banco de Dados pedia um banco completo pra uma loja de vinhos: criar as tabelas, popular, consultar e controlar quem acessa o quê. A lógica é simples: cada vinho vem de uma vinícola, e cada vinícola fica numa região.</p>
+        </article>
+
+        <!-- processo -->
+        <section>
+            <div class="faixa"><h2>Como o trabalho foi construído</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">01</span>
+                    <div>
+                        <h3>Modelar em três níveis</h3>
+                        <p class="texto">Região, Vinícola e Vinho, cada uma com chave primária de auto incremento. A vinícola aponta pra região e o vinho aponta pra vinícola, por chave estrangeira.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">02</span>
+                    <div>
+                        <h3>Inserir na ordem certa</h3>
+                        <p class="texto">Com chave estrangeira, a ordem importa: primeiro as 5 regiões (Vale dos Vinhedos, Napa, Bordeaux, Mendoza e Douro), depois as vinícolas, depois os 6 vinhos. Se inverter, o banco recusa.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">03</span>
+                    <div>
+                        <h3>Juntar tudo numa consulta</h3>
+                        <p class="texto">Dois JOINs trazem o nome do vinho, o ano, a vinícola e a região numa linha só.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">04</span>
+                    <div>
+                        <h3>Dar acesso só ao necessário</h3>
+                        <p class="texto">O usuário sommelier lê a tabela de vinhos inteira, mas da vinícola só enxerga o código e o nome. E tem limite de 40 consultas por hora.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <article class="post">
+            <figure class="codigo">
+                <figcaption class="mono">consulta com dois joins</figcaption>
+                <pre><code>SELECT v.nomeVinho, v.anoVinho, vc.nomeVinicola, r.nomeRegiao
+FROM Vinho v
+JOIN Vinicola vc ON v.codVinicola = vc.codVinicola
+JOIN Regiao r ON vc.codRegiao = r.codRegiao;</code></pre>
+            </figure>
+            <figure class="codigo">
+                <figcaption class="mono">usuário com acesso limitado</figcaption>
+                <pre><code>CREATE USER 'sommelier'@'localhost' IDENTIFIED BY '********'
+    WITH MAX_QUERIES_PER_HOUR 40;
+
+GRANT SELECT ON loja_vinhos.Vinho TO 'sommelier'@'localhost';
+GRANT SELECT (codVinicola, nomeVinicola)
+    ON loja_vinhos.Vinicola TO 'sommelier'@'localhost';</code></pre>
+            </figure>
+        </article>
+
+        <!-- devolutiva -->
+        <section>
+            <div class="faixa"><h2>Devolutiva do professor</h2></div>
+            <div class="devolutiva">
+                <blockquote>Modelo lógico: as tabelas Regiao, Vinicola e Vinho foram implementadas com a estrutura correta, utilizando chaves primárias com auto incremento e chaves estrangeiras que estabelecem as relações entre as entidades.</blockquote>
+                <blockquote>Inserção de dados: os comandos de inserção seguem a ordem lógica de dependências, populando primeiro a tabela de regiões, depois as vinícolas e, por fim, os vinhos, o que garante a integridade referencial do banco.</blockquote>
+                <blockquote>Consulta: a consulta utiliza JOINs de forma precisa para recuperar o nome do vinho, o ano, a vinícola e a região, integrando corretamente as três tabelas do modelo.</blockquote>
+                <blockquote>Controle de acesso: o usuário sommelier foi criado com a restrição de consultas por hora e recebeu as permissões de SELECT específicas para a tabela de vinhos e colunas selecionadas da tabela de vinícolas.</blockquote>
+                <p class="mono assinatura">professor da disciplina</p>
+            </div>
+        </section>
+
+        <!-- o que aprendi -->
+        <section>
+            <div class="faixa"><h2>O que aprendi</h2></div>
+            <div class="aprendi">
+                <div class="aprendi-col">
+                    <p class="mono">código</p>
+                    <ul>
+                        <li><span class="termo"><code>PRIMARY KEY AUTO_INCREMENT</code></span><span>chave de cada tabela, gerada pelo próprio banco</span></li>
+                        <li><span class="termo"><code>FOREIGN KEY</code></span><span>liga a vinícola à região e o vinho à vinícola</span></li>
+                        <li><span class="termo"><code>INSERT INTO … VALUES</code></span><span>várias linhas num comando só, na ordem das dependências</span></li>
+                        <li><span class="termo"><code>JOIN</code></span><span>junta as três tabelas numa consulta</span></li>
+                        <li><span class="termo"><code>CREATE USER … MAX_QUERIES_PER_HOUR</code></span><span>usuário com limite de uso</span></li>
+                        <li><span class="termo"><code>GRANT SELECT (colunas)</code></span><span>permissão por tabela e por coluna</span></li>
+                    </ul>
+                </div>
+                <div class="aprendi-col">
+                    <p class="mono">ferramentas</p>
+                    <ul>
+                        <li><span class="termo">BrModelo</span><span>modelo conceitual, o desenho das entidades</span></li>
+                        <li><span class="termo">MySQL Workbench</span><span>modelo lógico e execução dos scripts</span></li>
+                        <li><span class="termo">MySQL</span><span>o banco em si</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Mais projetos</h2></div>
+            <div class="vizinhos mono">
+                <a href="projetos.html">&larr; todos os projetos</a>
+                <a href="estudos-monitor-clima.html">Monitor de clima com ESP32 &rarr;</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Voltar para o início">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>início</span>
+    </a>
+
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projetos</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">atualizado em 16 nov 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/rodape.js"></script>
+    <script src="script/estudos.js"></script>
+</body>
+
+</html>

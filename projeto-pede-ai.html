@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pede.ai · Gustavo Cervejera</title>
+    <meta name="description" content="De um processo manual a um sistema em produção">
+    <!-- prévia ao compartilhar (linkedin, whatsapp). ao hospedar, troque og:image por um endereço completo -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pede.ai · Gustavo Cervejera">
+    <meta property="og:description" content="De um processo manual a um sistema em produção">
+    <meta property="og:image" content="img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina coluna">
+
+        <!-- topo -->
+        <header class="intro">
+            <a class="mono voltar" href="projetos.html">&larr; projetos</a>
+            <h1>Pede.ai</h1>
+            <p class="papel">De um processo manual a um sistema em produção</p>
+            <p class="texto">Plataforma interna do Sebrae/PR pra fazer pedidos às empresas contratadas por licitação. Escolhe o item, informa as medidas e o pedido sai pronto, com o preço do contrato calculado pelo sistema e tudo guardado num banco.</p>
+            <p class="mono">trabalho · sebrae/pr · 2026 · em produção com testadores beta</p>
+        </header>
+
+        <!-- resumo pra quem lê rápido -->
+        <div class="resumo">
+            <div><p class="mono">problema</p><p>Pedir material às licitadas era manual: conta de área e sangria na mão, centro de custo trocado entre regionais e nenhum histórico.</p></div>
+            <div><p class="mono">meu papel</p><p>Concebi e construí o sistema, da regra de negócio na API ao banco, aos testes e à tela.</p></div>
+            <div><p class="mono">resultado</p><p>Em produção com testadores beta. 168 testes automatizados, pedido abrindo em 1,3 s (antes até 8 s) e o fluxo de serviço entregue 3 semanas antes do prazo.</p></div>
+        </div>
+
+        <div class="capa capa-grande" data-nome="pede.ai"></div>
+
+        <section>
+            <div class="faixa"><h2>O problema</h2></div>
+            <div class="post">
+                <p>No núcleo de criação, pedir uma lona, um banner ou um serviço de design a uma empresa licitada dava trabalho. A pessoa abria a planilha do contrato, achava o item, fazia a conta na mão (área, sangria, quantidade, valor por m²), digitava o pedido e a etiqueta e ainda conferia se o centro de custo era da regional certa.</p>
+                <ul class="entregas"><li><b>Erro de conta:</b> um pedido por m² com sangria tem várias etapas, e cada uma é uma chance de errar.</li><li><b>Erro de centro de custo:</b> o de uma regional ia parar no pedido de outra.</li><li><b>Nenhum histórico:</b> o pedido existia só como o arquivo enviado.</li></ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>O que ele faz hoje</h2></div>
+            <div class="post">
+                <p><b>Impressão:</b> o pedido é montado num carrinho. Nos itens por m², a sangria é opcional, com margem única ou uma por lado. Cada item pode ir pra um destino diferente. Se o centro de custo não bater com a regional, aparece um alerta, e só dá pra seguir marcando que está ciente. No fim sai um .zip com o pedido, a etiqueta e os títulos do sistema de gestão.</p>
+                <p><b>Serviço:</b> o estúdio manda a proposta em PDF, o Pede.ai lê o arquivo e confere cada linha com o contrato: item, código, valor, subtotal e total. Se algo não bater, o registro fica bloqueado. Testei com 8 propostas reais, em dois layouts diferentes: as 22 linhas e os 8 totais foram lidos certos.</p>
+                <p>Os dois fluxos têm login individual, histórico, baixar os arquivos de novo, duplicar e cancelar.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Como está hoje</h2></div>
+            <div class="galeria g1">
+                <figure class="figura"><a href="img/projetos/pedeai-st-novo.jpg" target="_blank"><img src="img/projetos/pedeai-st-novo.jpg" alt="novo pedido, no MVP em Streamlit" loading="lazy"></a><figcaption class="mono">novo pedido, no MVP em Streamlit</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/pedeai-st-proposta.jpg" target="_blank"><img src="img/projetos/pedeai-st-proposta.jpg" alt="importar proposta: cada linha conferida com o contrato" loading="lazy"></a><figcaption class="mono">importar proposta: cada linha conferida com o contrato</figcaption></figure>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Onde queremos chegar</h2></div>
+            <p class="texto recuo">A interface da versão final, em React. Ela fica pausada de propósito até o uso no MVP mostrar o fluxo certo.</p>
+            <div class="galeria g1">
+                <figure class="figura"><a href="img/projetos/pedeai-novo-pedido.jpg" target="_blank"><img src="img/projetos/pedeai-novo-pedido.jpg" alt="novo pedido" loading="lazy"></a><figcaption class="mono">novo pedido</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/pedeai-itens.jpg" target="_blank"><img src="img/projetos/pedeai-itens.jpg" alt="itens e carrinho" loading="lazy"></a><figcaption class="mono">itens e carrinho</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/pedeai-meus-pedidos.jpg" target="_blank"><img src="img/projetos/pedeai-meus-pedidos.jpg" alt="meus pedidos" loading="lazy"></a><figcaption class="mono">meus pedidos</figcaption></figure>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Decisões que guiam o sistema</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">01</span>
+                    <div>
+                        <h3>Validar antes de polir</h3>
+                        <p class="texto">O React já existia, com login e painel, e mesmo assim coloquei o Streamlit em produção primeiro. No dia em que o fluxo de serviço entrou no ar, o atendimento pediu descrição e observação por item. Saiu no mesmo dia.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">02</span>
+                    <div>
+                        <h3>Regra no backend, tela simples</h3>
+                        <p class="texto">Toda a regra de negócio fica na API. O Streamlit só mostra e envia. Quando o React voltar, liga nas mesmas rotas e nada se perde.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">03</span>
+                    <div>
+                        <h3>O preço nunca vem de quem usa</h3>
+                        <p class="texto">A tela manda o item e as medidas. O servidor recalcula pela tabela do contrato e grava um retrato de cada item. Se a tabela mudar amanhã, o recibo de hoje continua certo.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">04</span>
+                    <div>
+                        <h3>Nada é apagado</h3>
+                        <p class="texto">Pedidos, itens e eventos só aceitam inserção, e quem garante é o próprio banco, com gatilhos. Cancelar registra um novo evento.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">05</span>
+                    <div>
+                        <h3>Dado de negócio fora do código</h3>
+                        <p class="texto">Preços, licitadas e o mapa de centro de custo ficam em arquivos de dados. A tabela de preços é gerada da planilha de contratos no "tudo ou nada": se uma aba vier com defeito, nada é gravado.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">06</span>
+                    <div>
+                        <h3>Segurança em camadas</h3>
+                        <p class="texto">Validação na entrada da API e de novo no banco. A API conecta com um usuário que só lê e insere. Senha guardada com scrypt e sessão com token assinado.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>O centavo que sumia</h2></div>
+            <div class="post">
+                <p>Escrevi um teste de estresse que monta centenas de carrinhos aleatórios e confere cada total com uma conta exata feita de outro jeito. Ele achou que cerca de 0,1% dos itens saíam 1 centavo abaixo: 540.251,415 virava ,41 em vez de ,42. A conta era em <code>float</code>, que não representa decimal exato. Passei tudo pra <code>Decimal</code>, com arredondamento comercial só no total do item.</p>
+                <p>O mesmo teste achou uma medida de 1,2345 m cobrada assim mas gravada como 1,235 m, e um caractere invisível que derrubava a gravação. Os testes ponta a ponta, rodando o Streamlit real contra a API real, acharam mais dois: o carrinho usando valores da tela anterior e a duplicação devolvendo o número do pedido antigo.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Medir antes de mexer</h2></div>
+            <div class="post">
+                <p>Abrir um pedido no histórico levava até 8 segundos. Medi em produção: rotas sem banco respondiam em 0,3 s, com banco em 2,7 s. A API está nos EUA e o banco em São Paulo, e cada conexão nova custava 1,2 s só pra negociar segurança. Com pool de conexões e cache na sessão, caiu pra cerca de 1,3 s. A suíte de testes caiu de 274 s pra 108 s.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Trabalhando com IA</h2></div>
+            <div class="post">
+                <p>Boa parte do projeto foi feita em par com o Claude Code. O que mais funcionou foi um <code>CLAUDE.md</code> na raiz do repositório, com as regras de negócio, o que nunca pode ser feito, a ordem do deploy e o backlog. A IA acelerou muito os testes. As decisões de negócio continuaram humanas: quando faltou uma resposta do atendimento, a regra foi recusar com aviso, nunca inventar um valor.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Linha do tempo</h2></div>
+            <div class="post">
+
+                <ul class="entregas"><li><b>Maio:</b> primeira versão do MVP no ar</li><li><b>Agosto:</b> sangria, um destino por item e uma rodada grande de correções</li><li><b>Início de outubro:</b> banco de verdade, segurança, testes de estresse, login e histórico</li><li><b>13 de outubro:</b> fluxo de serviço com leitura de PDF em produção, três semanas antes do prazo</li></ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>O que aprendi</h2></div>
+            <div class="aprendi">
+                <div class="aprendi-col">
+                    <p class="mono">código</p>
+                    <ul>
+                        <li><span class="termo"><code>Decimal</code></span><span>dinheiro sem erro de arredondamento</span></li>
+                        <li><span class="termo">Rotas FastAPI</span><span>a regra de negócio num lugar só</span></li>
+                        <li><span class="termo">Gatilhos no PostgreSQL</span><span>tabelas que só aceitam inserção</span></li>
+                        <li><span class="termo">Pool de conexões</span><span>menos tempo negociando com o banco</span></li>
+                        <li><span class="termo">Testes de estresse e ponta a ponta</span><span>168 testes em 9 arquivos, com dado aleatório</span></li>
+                        <li><span class="termo">scrypt e token assinado</span><span>senha e sessão</span></li>
+                    </ul>
+                </div>
+                <div class="aprendi-col">
+                    <p class="mono">ferramentas</p>
+                    <ul>
+                        <li><span class="termo">Python e FastAPI</span><span>API, no Render</span></li>
+                        <li><span class="termo">Streamlit</span><span>MVP em produção</span></li>
+                        <li><span class="termo">PostgreSQL no Supabase</span><span>banco</span></li>
+                        <li><span class="termo">pytest</span><span>testes</span></li>
+                        <li><span class="termo">React e Vite</span><span>versão final, pausada</span></li>
+                        <li><span class="termo">Claude Code</span><span>par de programação, guiado pelo CLAUDE.md</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- navegação entre projetos -->
+        <section>
+            <div class="faixa"><h2>Mais projetos</h2></div>
+            <div class="vizinhos mono">
+                <a href="projetos.html">&larr; todos os projetos</a>
+                <a href="projeto-enaex.html">Enaex &rarr;</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Voltar para o início">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>início</span>
+    </a>
+
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projetos</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">atualizado em 16 nov 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/rodape.js"></script>
+    <script src="script/imagens.js"></script>
+    <script src="script/projeto.js"></script>
+</body>
+
+</html>

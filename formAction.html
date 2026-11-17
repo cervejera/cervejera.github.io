@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem recebida · Gustavo Cervejera</title>
+    <meta name="description" content="Confirmação do formulário de contato">
+    <!-- prévia ao compartilhar (linkedin, whatsapp). ao hospedar, troque og:image por um endereço completo -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mensagem recebida · Gustavo Cervejera">
+    <meta property="og:description" content="Confirmação do formulário de contato">
+    <meta property="og:image" content="img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="bloco topo">
+        <div class="coluna">
+            <a class="mono voltar" href="index.html">&larr; início</a>
+            <h1>Mensagem recebida</h1>
+            <p class="papel">Confirmação do formulário de contato</p>
+        </div>
+    </div>
+    <div class="bloco">
+        <div class="coluna">
+            <p class="saudacao" id="saudacao"></p>
+
+            <!-- quando abre a página sem enviar o form -->
+            <p class="sem-dados" id="semDados">Nenhum dado foi recebido. Preencha o <a href="form.html">formulário de
+                    contato</a> para ver o resultado aqui.</p>
+
+            <!-- url recebida -->
+            <p class="url-recebida" id="urlRecebida"></p>
+
+            <!-- preenchida pelo action.js -->
+            <table id="tabelaDados">
+                <tr>
+                    <th>Nome</th>
+                    <td id="resNome"></td>
+                </tr>
+                <tr>
+                    <th>E-mail</th>
+                    <td id="resEmail"></td>
+                </tr>
+                <tr>
+                    <th>Celular</th>
+                    <td id="resCelular"></td>
+                </tr>
+                <tr>
+                    <th>Empresa</th>
+                    <td id="resEmpresa"></td>
+                </tr>
+                <tr>
+                    <th>Assunto</th>
+                    <td id="resAssunto"></td>
+                </tr>
+                <tr>
+                    <th>Data para conversar</th>
+                    <td id="resConversa"></td>
+                </tr>
+                <tr>
+                    <th>Resposta por</th>
+                    <td id="resContato"></td>
+                </tr>
+                <tr>
+                    <th>Termos</th>
+                    <td id="resTermos"></td>
+                </tr>
+            </table>
+
+            <a href="form.html">enviar outra mensagem</a> · <a href="index.html">voltar para o início</a>
+        </div>
+    </div>
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Voltar para o início">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>início</span>
+    </a>
+
+    <!-- rodapé -->
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projetos</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">atualizado em 16 nov 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/rodape.js"></script>
+    <script src="script/action.js"></script>
+</body>
+
+</html>

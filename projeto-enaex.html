@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enaex · Gustavo Cervejera</title>
+    <meta name="description" content="Apresentação corporativa interativa, com dashboards ligados ao Excel">
+    <!-- prévia ao compartilhar (linkedin, whatsapp). ao hospedar, troque og:image por um endereço completo -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Enaex · Gustavo Cervejera">
+    <meta property="og:description" content="Apresentação corporativa interativa, com dashboards ligados ao Excel">
+    <meta property="og:image" content="img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina coluna">
+
+        <!-- topo -->
+        <header class="intro">
+            <a class="mono voltar" href="projetos.html">&larr; projetos</a>
+            <h1>Enaex</h1>
+            <p class="papel">Apresentação corporativa interativa, com dashboards ligados ao Excel</p>
+            <p class="texto">Projeto externo para a Enaex, empresa do setor de explosivos e mineração. Uma apresentação de estratégia e resultados financeiros que navega por cliques, com 28 gráficos alimentados por uma única planilha.</p>
+            <p class="mono">projeto externo · enaex · 2026 · powerpoint e excel</p>
+            <p class="aviso mono">os números dos gráficos foram trocados por valores fictícios. o desenho e a estrutura são os originais.</p>
+        </header>
+
+        <!-- resumo pra quem lê rápido -->
+        <div class="resumo">
+            <div><p class="mono">problema</p><p>Uma apresentação de resultados que precisava ser navegada ao vivo e atualizada todo ano sem refazer os gráficos.</p></div>
+            <div><p class="mono">meu papel</p><p>Projeto externo: estruturei a planilha, montei os 28 gráficos e desenhei a apresentação inteira.</p></div>
+            <div><p class="mono">resultado</p><p>Uma base de dados alimenta todos os gráficos. Ano novo é uma linha a mais, sem mexer no PowerPoint.</p></div>
+        </div>
+
+        <div class="capa capa-grande" data-nome="enaex"></div>
+
+        <section>
+            <div class="faixa"><h2>O problema</h2></div>
+            <div class="post">
+                <p>A apresentação precisava funcionar ao vivo, com quem apresenta pulando pra qualquer tema na hora, e os gráficos tinham que ser fáceis de atualizar todo ano sem refazer nada.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Como foi construído</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">01</span>
+                    <div>
+                        <h3>Uma base de dados só</h3>
+                        <p class="texto">Toda série anual mora numa aba DADOS. As abas de cada slide leem dela por fórmula, e ninguém digita número fora dela.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">02</span>
+                    <div>
+                        <h3>Ano novo sem refazer gráfico</h3>
+                        <p class="texto">Pra entrar um ano novo, basta uma linha a mais em DADOS, marcada como LTM. A barra vermelha do último período anda sozinha.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">03</span>
+                    <div>
+                        <h3>Conferência embutida</h3>
+                        <p class="texto">Colunas de checagem recalculam as margens. E um código de cores: azul é valor digitado, preto é fórmula, verde é referência a outra aba e amarelo é divergência encontrada no deck, pendente de confirmação com o cliente.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">04</span>
+                    <div>
+                        <h3>Gráficos vinculados ao PowerPoint</h3>
+                        <p class="texto">Cada gráfico é dimensionado no Excel no tamanho final do slide e colado com vínculo. A atualização automática fica desligada, pra não aparecer o aviso de vínculos na frente do público.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">05</span>
+                    <div>
+                        <h3>Navegação por cliques</h3>
+                        <p class="texto">Sumário clicável e botões de voltar, próximo e início em cada slide, pra apresentar em modo quiosque.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Dashboards</h2></div>
+            <div class="galeria g2">
+                <figure class="figura"><a href="img/projetos/enaex-financial-record.jpg" target="_blank"><img src="img/projetos/enaex-financial-record.jpg" alt="histórico financeiro: vendas, EBITDA e lucro" loading="lazy"></a><figcaption class="mono">histórico financeiro: vendas, EBITDA e lucro</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/enaex-vendas.jpg" target="_blank"><img src="img/projetos/enaex-vendas.jpg" alt="vendas e diversificação por país" loading="lazy"></a><figcaption class="mono">vendas e diversificação por país</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/enaex-ebitda.jpg" target="_blank"><img src="img/projetos/enaex-ebitda.jpg" alt="EBITDA e diversificação" loading="lazy"></a><figcaption class="mono">EBITDA e diversificação</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/enaex-colaboradores.jpg" target="_blank"><img src="img/projetos/enaex-colaboradores.jpg" alt="colaboradores no mundo" loading="lazy"></a><figcaption class="mono">colaboradores no mundo</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/enaex-fluxo-caixa.jpg" target="_blank"><img src="img/projetos/enaex-fluxo-caixa.jpg" alt="estabilidade do fluxo de caixa" loading="lazy"></a><figcaption class="mono">estabilidade do fluxo de caixa</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/enaex-evolucao-vendas.jpg" target="_blank"><img src="img/projetos/enaex-evolucao-vendas.jpg" alt="evolução de volume de vendas" loading="lazy"></a><figcaption class="mono">evolução de volume de vendas</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/enaex-divida.jpg" target="_blank"><img src="img/projetos/enaex-divida.jpg" alt="estrutura da dívida" loading="lazy"></a><figcaption class="mono">estrutura da dívida</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/enaex-indicadores.jpg" target="_blank"><img src="img/projetos/enaex-indicadores.jpg" alt="indicadores financeiros" loading="lazy"></a><figcaption class="mono">indicadores financeiros</figcaption></figure>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Customer Support vs ENAEX Subsidiaries</h2></div>
+            <p class="texto recuo">Outra apresentação do mesmo projeto: escopo e papéis do suporte ao cliente entre a Enaex e as subsidiárias.</p>
+            <div class="galeria g2">
+                <figure class="figura"><a href="img/projetos/enaex-cs-capa.jpg" target="_blank"><img src="img/projetos/enaex-cs-capa.jpg" alt="capa" loading="lazy"></a><figcaption class="mono">capa</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/enaex-cs-definicoes.jpg" target="_blank"><img src="img/projetos/enaex-cs-definicoes.jpg" alt="definições" loading="lazy"></a><figcaption class="mono">definições</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/enaex-cs-fluxo.jpg" target="_blank"><img src="img/projetos/enaex-cs-fluxo.jpg" alt="fluxo de atendimento" loading="lazy"></a><figcaption class="mono">fluxo de atendimento</figcaption></figure>
+                <figure class="figura"><a href="img/projetos/enaex-cs-parceria.jpg" target="_blank"><img src="img/projetos/enaex-cs-parceria.jpg" alt="parceria entre as equipes" loading="lazy"></a><figcaption class="mono">parceria entre as equipes</figcaption></figure>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>O que aprendi</h2></div>
+            <div class="aprendi">
+                <div class="aprendi-col">
+                    <p class="mono">excel e powerpoint</p>
+                    <ul>
+                        <li><span class="termo">Fonte única de verdade</span><span>uma aba de dados, o resto por fórmula</span></li>
+                        <li><span class="termo"><code>SE</code> e referência entre abas</span><span>a barra do último período destacada sozinha</span></li>
+                        <li><span class="termo">Colunas de checagem</span><span>margens recalculadas pra pegar erro</span></li>
+                        <li><span class="termo">Gráfico vinculado</span><span>Excel colado no PowerPoint mantendo o vínculo</span></li>
+                        <li><span class="termo">Hiperlinks internos</span><span>navegação entre slides</span></li>
+                    </ul>
+                </div>
+                <div class="aprendi-col">
+                    <p class="mono">ferramentas</p>
+                    <ul>
+                        <li><span class="termo">Excel</span><span>base de dados e gráficos</span></li>
+                        <li><span class="termo">PowerPoint</span><span>apresentação interativa</span></li>
+                        <li><span class="termo">Illustrator</span><span>ícones e elementos</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- navegação entre projetos -->
+        <section>
+            <div class="faixa"><h2>Mais projetos</h2></div>
+            <div class="vizinhos mono">
+                <a href="projetos.html">&larr; todos os projetos</a>
+                <a href="projeto-infograficos.html">Infográficos &rarr;</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Voltar para o início">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>início</span>
+    </a>
+
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projetos</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">atualizado em 16 nov 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/rodape.js"></script>
+    <script src="script/imagens.js"></script>
+    <script src="script/projeto.js"></script>
+</body>
+
+</html>

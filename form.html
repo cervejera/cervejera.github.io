@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato · Gustavo Cervejera</title>
+    <meta name="description" content="Vaga, projeto ou só uma conversa">
+    <!-- prévia ao compartilhar (linkedin, whatsapp). ao hospedar, troque og:image por um endereço completo -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contato · Gustavo Cervejera">
+    <meta property="og:description" content="Vaga, projeto ou só uma conversa">
+    <meta property="og:image" content="img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="bloco topo">
+        <div class="coluna">
+            <a class="mono voltar" href="index.html">&larr; início</a>
+            <h1>Contato</h1>
+            <p class="papel">Vaga, projeto ou só uma conversa</p>
+            <p class="texto">Todos os campos são obrigatórios. Os dados são conferidos antes do envio e vão, pelo método
+                GET, para a página de confirmação.</p>
+        </div>
+    </div>
+    <div class="bloco">
+        <div class="coluna">
+            <!-- aviso de erro (form.js) -->
+            <p class="aviso-form" id="avisoForm"></p>
+
+            <form id="formContato" action="formAction.html" method="GET" autocomplete="off">
+
+                <div class="campo">
+                    <label class="titulo" for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="nome e sobrenome"
+                        pattern="[A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÊÍÓÔÕÚÇ\s]{5,60}" title="Somente letras, de 5 a 60 caracteres"
+                        required>
+                    <span class="erro" id="erroNome"></span>
+                </div>
+
+                <div class="campo">
+                    <label class="titulo" for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="nome@email.com" required>
+                    <span class="erro" id="erroEmail"></span>
+                </div>
+
+                <div class="campo">
+                    <label class="titulo" for="celular">Celular</label>
+                    <input type="tel" id="celular" name="celular" placeholder="(41) 99999-9999"
+                        pattern="\(\d{2}\)\s\d{4,5}-\d{4}$" title="(xx) xxxxx-xxxx" required>
+                    <span class="erro" id="erroCelular"></span>
+                </div>
+
+                <div class="campo">
+                    <label class="titulo" for="empresa">Empresa ou instituição</label>
+                    <input type="text" id="empresa" name="empresa" placeholder="onde você trabalha ou estuda"
+                        minlength="2" maxlength="60" required>
+                    <span class="erro" id="erroEmpresa"></span>
+                </div>
+
+                <div class="campo">
+                    <label class="titulo" for="assunto">Assunto</label>
+                    <select id="assunto" name="assunto" required>
+                        <option value="">selecione...</option>
+                        <option value="Vaga ou oportunidade">Vaga ou oportunidade</option>
+                        <option value="Análise de dados">Análise de dados</option>
+                        <option value="Projeto web">Projeto web</option>
+                        <option value="Projeto de design">Projeto de design</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                    <span class="erro" id="erroAssunto"></span>
+                </div>
+
+                <div class="campo">
+                    <label class="titulo" for="conversa">Melhor data para conversarmos</label>
+                    <input type="date" id="conversa" name="conversa" required>
+                    <span class="erro" id="erroConversa"></span>
+                </div>
+
+                <div class="campo">
+                    <label class="titulo">Prefere resposta por</label>
+                    <label class="opcao"><input type="radio" name="contato" value="E-mail" required> e-mail</label>
+                    <label class="opcao"><input type="radio" name="contato" value="WhatsApp"> whatsapp</label>
+                    <label class="opcao"><input type="radio" name="contato" value="Ligação"> ligação</label>
+                    <span class="erro" id="erroContato"></span>
+                </div>
+
+                <div class="campo">
+                    <label class="opcao"><input type="checkbox" id="termos" name="termos" value="Aceito" required>
+                        Concordo em enviar meus dados para ser contatado.</label>
+                    <span class="erro" id="erroTermos"></span>
+                </div>
+
+                <input class="botao" type="submit" value="Enviar" id="botaoEnviar">
+                <input class="botao contorno" type="reset" value="Limpar" id="botaoLimpar">
+            </form>
+        </div>
+    </div>
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Voltar para o início">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>início</span>
+    </a>
+
+    <!-- rodapé -->
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projetos</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">atualizado em 16 nov 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/rodape.js"></script>
+    <script src="script/form.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de clima com ESP32 · Gustavo Cervejera</title>
+    <meta name="description" content="Começou como uma leitura de sensor no simulador e terminou com o kit montado: um ESP32 que lê temperatura e umidade, liga um relé quando passa do limite e manda tudo pra nuvem a cada 20 segundos.">
+    <!-- prévia ao compartilhar (linkedin, whatsapp). ao hospedar, troque og:image por um endereço completo -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Monitor de clima com ESP32 · Gustavo Cervejera">
+    <meta property="og:description" content="Começou como uma leitura de sensor no simulador e terminou com o kit montado: um ESP32 que lê temperatura e umidade, liga um relé quando passa do limite e manda tudo pra nuvem a cada 20 segundos.">
+    <meta property="og:image" content="img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina coluna">
+
+        <!-- topo do post -->
+        <header class="intro">
+            <a class="mono voltar" href="projetos.html">&larr; projetos</a>
+            <p class="mono">fundamentos de iot · somativas 1 e 2 · pucpr 2026 · 4 min de leitura</p>
+            <h1 class="titulo-post">Monitor de clima com ESP32: do simulador à montagem</h1>
+            <p class="papel">Começou como uma leitura de sensor no simulador e terminou com o kit montado: um ESP32 que lê temperatura e umidade, liga um relé quando passa do limite e manda tudo pra nuvem a cada 20 segundos.</p>
+        </header>
+
+        <!-- resumo pra quem lê rápido -->
+        <div class="resumo">
+            <div><p class="mono">problema</p><p>Ler temperatura e umidade, agir quando passa do limite e guardar os dados na nuvem.</p></div>
+            <div><p class="mono">meu papel</p><p>Programei em MicroPython, testei no simulador e montei o circuito com o kit.</p></div>
+            <div><p class="mono">resultado</p><p>ESP32 liga o relé sozinho e envia as leituras ao ThingSpeak a cada 20 segundos.</p></div>
+        </div>
+
+        <!-- capa: troque por <img src="img/..." alt="..."> (1920x1080) -->
+        <div class="capa capa-grande" data-nome="monitor de clima"></div>
+
+        <article class="post">
+            <h2>O tema</h2>
+            <p>As duas somativas de Fundamentos de IoT são o mesmo projeto em duas fases. Na primeira, o ESP32 só lia
+                o sensor, e tudo no Wokwi, um simulador de placas no navegador. Na segunda, montei o kit de verdade, com
+                ESP32, sensor DHT11 e um relé, programado em MicroPython, e liguei tudo na rede e na nuvem.</p>
+        </article>
+
+        <!-- parte 1 -->
+        <section>
+            <div class="faixa"><h2>Parte 1 · leitura no simulador</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">01</span>
+                    <div>
+                        <h3>Preparar o ambiente</h3>
+                        <p class="texto">O Wokwi não tem o DHT11, que é o sensor do kit da aula, só o DHT22. Os dois usam protocolo parecido, então troquei só a classe no código e mantive a mesma lógica.</p>
+                        <figure class="figura"><img src="img/estudos/leitura-dht-etapa1.jpg" alt="etapa 1: ESP32 e DHT22 no Wokwi" loading="lazy"><figcaption class="mono">etapa 1: ESP32 e DHT22 no Wokwi</figcaption></figure>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">02</span>
+                    <div>
+                        <h3>Configurar o ESP32</h3>
+                        <p class="texto">A placa subiu o MicroPython sem problema, mas a leitura deu timeout. O erro não era da placa, era da comunicação com o sensor.</p>
+                        <figure class="figura"><img src="img/estudos/leitura-dht-etapa2.jpg" alt="etapa 2: firmware rodando e o timeout no console" loading="lazy"><figcaption class="mono">etapa 2: firmware rodando e o timeout no console</figcaption></figure>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">03</span>
+                    <div>
+                        <h3>Ler o sensor</h3>
+                        <p class="texto">Corrigi a fiação, com alimentação no 3V3, dados no pino 4 e terra no GND. A leitura apareceu no console a cada 5 segundos.</p>
+                        <figure class="figura"><img src="img/estudos/leitura-dht-etapa3.jpg" alt="etapa 3: leituras chegando no console" loading="lazy"><figcaption class="mono">etapa 3: leituras chegando no console</figcaption></figure>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <article class="post">
+            <figure class="codigo">
+                <figcaption class="mono">main.py</figcaption>
+                <pre><code>import dht
+import machine
+import time
+
+d = dht.DHT22(machine.Pin(4))
+
+while True:
+    d.measure()
+    print("Temp={}   Umid={}".format(d.temperature(), d.humidity()))
+    time.sleep(5)</code></pre>
+            </figure>
+            <p><a href="https://wokwi.com/projects/475080745447471105" target="_blank">abrir a simulação no Wokwi <span class="flecha">&#x2197;&#xFE0E;</span></a></p>
+        </article>
+
+        <!-- parte 2 -->
+        <section>
+            <div class="faixa"><h2>Parte 2 · montagem com o kit</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">04</span>
+                    <div>
+                        <h3>Conectar no Wi-Fi</h3>
+                        <p class="texto">A conexão ficou num arquivo separado, o wifi_lib.py: ativa a interface, tenta conectar e espera até dar certo. O programa principal só chama conecta().</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">05</span>
+                    <div>
+                        <h3>Ler o sensor</h3>
+                        <p class="texto">O DHT11 fica no pino 4. A cada ciclo, uma leitura de temperatura e uma de umidade.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">06</span>
+                    <div>
+                        <h3>Decidir e agir</h3>
+                        <p class="texto">Passou de 31 °C ou de 70% de umidade, o relé no pino 2 liga. Abaixo disso, desliga. É a mesma lógica de uma irrigação que liga quando o solo seca.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">07</span>
+                    <div>
+                        <h3>Mandar pra nuvem</h3>
+                        <p class="texto">Cada leitura vai pro ThingSpeak numa requisição HTTP, nos campos 1 e 2 do canal, e lá vira gráfico.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">08</span>
+                    <div>
+                        <h3>Não travar no erro</h3>
+                        <p class="texto">O ciclo inteiro fica num try/except. Se a leitura ou a rede falhar, o programa avisa e tenta de novo 20 segundos depois.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <article class="post">
+            <figure class="codigo">
+                <figcaption class="mono">main.py (resumido)</figcaption>
+                <pre><code>while True:
+    try:
+        sensor.measure()
+        temp = sensor.temperature()
+        umid = sensor.humidity()
+
+        if temp &gt; LIMITE_TEMP or umid &gt; LIMITE_UMID:
+            rele.value(1)
+        else:
+            rele.value(0)
+
+        url = "https://api.thingspeak.com/update?api_key={}&amp;field1={}&amp;field2={}".format(API_KEY, temp, umid)
+        urequests.get(url).close()
+
+    except Exception as e:
+        print("Erro:", e)
+
+    time.sleep(20)</code></pre>
+            </figure>
+            <p><a href="https://youtu.be/1IFe7uRuKKs" target="_blank">ver o vídeo da montagem <span class="flecha">&#x2197;&#xFE0E;</span></a></p>
+        </article>
+
+        <!-- o que aprendi -->
+        <section>
+            <div class="faixa"><h2>O que aprendi</h2></div>
+            <div class="aprendi">
+                <div class="aprendi-col">
+                    <p class="mono">código</p>
+                    <ul>
+                        <li><span class="termo">MicroPython</span><span>Python rodando direto na placa</span></li>
+                        <li><span class="termo"><code>machine.Pin</code></span><span>pinos de entrada e saída do ESP32, pro sensor e pro relé</span></li>
+                        <li><span class="termo"><code>dht.DHT11</code> / <code>DHT22</code></span><span>leitura de temperatura e umidade</span></li>
+                        <li><span class="termo"><code>network.WLAN</code></span><span>conexão no Wi-Fi</span></li>
+                        <li><span class="termo"><code>urequests</code></span><span>requisição HTTP pra mandar a leitura pra nuvem</span></li>
+                        <li><span class="termo"><code>import</code> de arquivo próprio</span><span>a conexão separada no wifi_lib.py</span></li>
+                        <li><span class="termo"><code>try</code> / <code>except</code> e <code>time.sleep</code></span><span>loop que segue rodando mesmo com erro</span></li>
+                    </ul>
+                </div>
+                <div class="aprendi-col">
+                    <p class="mono">ferramentas</p>
+                    <ul>
+                        <li><span class="termo">Wokwi</span><span>simulador de ESP32 no navegador</span></li>
+                        <li><span class="termo">Thonny</span><span>editor pra gravar o código na placa</span></li>
+                        <li><span class="termo">ESP32, DHT11 e relé</span><span>o kit físico da montagem</span></li>
+                        <li><span class="termo">ThingSpeak</span><span>guarda as leituras e mostra em gráfico</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Mais projetos</h2></div>
+            <div class="vizinhos mono">
+                <a href="projetos.html">&larr; todos os projetos</a>
+                <a href="projeto-pede-ai.html">Pede.ai &rarr;</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Voltar para o início">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>início</span>
+    </a>
+
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projetos</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">atualizado em 16 nov 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/rodape.js"></script>
+    <script src="script/imagens.js"></script>
+    <script src="script/estudos.js"></script>
+</body>
+
+</html>

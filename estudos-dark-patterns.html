@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark patterns e o design engineer · Gustavo Cervejera</title>
+    <meta name="description" content="Assinar leva dois cliques, cancelar leva dez telas. Um trabalho sobre esse dilema, a solução que defendi e o que a devolutiva do professor me ensinou.">
+    <!-- prévia ao compartilhar (linkedin, whatsapp). ao hospedar, troque og:image por um endereço completo -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dark patterns e o design engineer · Gustavo Cervejera">
+    <meta property="og:description" content="Assinar leva dois cliques, cancelar leva dez telas. Um trabalho sobre esse dilema, a solução que defendi e o que a devolutiva do professor me ensinou.">
+    <meta property="og:image" content="img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina coluna">
+
+        <!-- topo do post -->
+        <header class="intro">
+            <a class="mono voltar" href="projetos.html">&larr; projetos</a>
+            <p class="mono">ética · atp · pucpr 2026 · 4 min de leitura</p>
+            <h1 class="titulo-post">Dark patterns e o design engineer</h1>
+            <p class="papel">Assinar leva dois cliques, cancelar leva dez telas. Um trabalho sobre esse dilema, a solução
+                que defendi e o que a devolutiva do professor me ensinou.</p>
+        </header>
+
+        <!-- resumo pra quem lê rápido -->
+        <div class="resumo">
+            <div><p class="mono">problema</p><p>Assinar um serviço leva dois cliques, cancelar leva dez telas. Isso é ético?</p></div>
+            <div><p class="mono">meu papel</p><p>Escolhi o dilema e construí a análise em cinco etapas, com Kant e utilitarismo.</p></div>
+            <div><p class="mono">resultado</p><p>Devolutiva destacou a clareza de pensamento e a escrita acadêmica.</p></div>
+        </div>
+
+        <!-- capa: troque por <img src="img/..." alt="..."> (1920x1080) -->
+        <div class="capa capa-grande" data-nome="dark patterns"></div>
+
+        <article class="post">
+            <h2>O tema</h2>
+            <p>Antes de entrar na faculdade eu já me irritava com isso como usuário: o serviço de assinatura te
+                contrata em poucos cliques, mas pra cancelar você passa por telas longas, confusas ou escondidas em
+                menus que ninguém acha. Isso tem nome no design. É um <i>dark pattern</i>, termo criado pelo Harry
+                Brignull pra interfaces feitas pra levar o usuário a uma decisão que ele não tomaria se visse tudo
+                com clareza.</p>
+            <p>A disciplina de Ética foi construída em volta de um trabalho só: escolher um dilema da própria profissão
+                e defender uma solução justa, uma etapa por semana. Escolhi esse.</p>
+        </article>
+
+        <!-- processo -->
+        <section>
+            <div class="faixa"><h2>Como o trabalho foi construído</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">01</span>
+                    <div>
+                        <h3>Propor o dilema <span class="mono semana">semana 2</span></h3>
+                        <p class="texto">Escolhi o cancelamento escondido em apps de assinatura. Já me irritava como usuário, e um dia posso ser eu a pessoa que implementa, ou se recusa a implementar, essa tela.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">02</span>
+                    <div>
+                        <h3>Existe resposta certa? <span class="mono semana">semana 3</span></h3>
+                        <p class="texto">Os dois lados são legítimos. A empresa precisa reter cliente, e isso mantém empregos. O usuário tem direito de decidir sobre o próprio dinheiro sem barreira inventada pelo design.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">03</span>
+                    <div>
+                        <h3>Separar moral, lei e ética <span class="mono semana">semana 4</span></h3>
+                        <p class="texto">Moral é o que o grupo aceita, lei é o que o Estado impõe, ética pergunta se aquilo se sustenta. No mercado, dificultar o cancelamento é chamado de "boa prática de retenção": é legal, é aceito e mesmo assim não passa no teste.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">04</span>
+                    <div>
+                        <h3>Fundamentar <span class="mono semana">semana 5</span></h3>
+                        <p class="texto">Kant: o usuário é um fim, não um meio pra bater meta de retenção. Utilitarismo: o ganho de curto prazo vira perda de confiança, desgaste da marca e pressão regulatória. Os dois chegam no mesmo lugar por caminhos diferentes.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">05</span>
+                    <div>
+                        <h3>Propor uma solução justa <span class="mono semana">semana 6</span></h3>
+                        <p class="texto">Transparência por padrão. A mesma facilidade que a empresa oferece pra gerar receita tem que existir pro usuário sair.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <article class="post">
+            <blockquote class="citacao">O processo de cancelamento de uma assinatura deve ser tão simples e acessível
+                quanto o processo de contratação.</blockquote>
+
+            <h2>Quem mais perde</h2>
+            <p>Quem tem menos familiaridade com tecnologia, como os idosos. Tem gente pagando por serviço que não usa
+                mais só porque não achou o botão de cancelar. E o designer que aceita fazer essa tela, mesmo sob pressão,
+                ajuda a normalizar a manipulação como prática da profissão.</p>
+        </article>
+
+        <!-- devolutiva -->
+        <section>
+            <div class="faixa"><h2>Devolutiva do professor</h2></div>
+            <div class="devolutiva">
+                <blockquote>Gostei bastante da escolha do seu tema e da sensibilidade contemporânea em analisar a
+                    engenharia de design [...]. Discutir os <i>dark patterns</i> não apenas como uma métrica de negócios,
+                    mas como uma armadilha que instrumentaliza os mais vulneráveis (como idosos), demonstra o quanto sua
+                    formação técnica já nasce permeada pela consciência cidadã.</blockquote>
+                <blockquote>Você demonstrou uma clareza de pensamento formidável e uma escrita acadêmica primorosa;
+                    mantenha esse padrão de excelência atentando-se sempre à extensão solicitada nas diretrizes
+                    formais.</blockquote>
+                <p class="mono assinatura">professor da disciplina</p>
+            </div>
+        </section>
+
+        <!-- o que aprendi -->
+        <section>
+            <div class="faixa"><h2>O que aprendi</h2></div>
+            <div class="aprendi">
+                <div class="aprendi-col">
+                    <p class="mono">conceitos</p>
+                    <ul>
+                        <li><span class="termo">Ética, moral e lei</span><span>o que se pergunta, o que o grupo aceita, o que o Estado impõe</span></li>
+                        <li><span class="termo">Dilema ético</span><span>conflito entre dois valores legítimos</span></li>
+                        <li><span class="termo">Dark pattern</span><span>interface feita pra induzir uma decisão</span></li>
+                        <li><span class="termo">Deontologia (Kant)</span><span>a pessoa como fim, nunca só como meio</span></li>
+                        <li><span class="termo">Utilitarismo</span><span>pesar o resultado pra todos no longo prazo</span></li>
+                        <li><span class="termo">Transparência por padrão</span><span>sair tão fácil quanto entrar</span></li>
+                    </ul>
+                </div>
+                <div class="aprendi-col">
+                    <p class="mono">referências</p>
+                    <ul>
+                        <li><span class="termo">Harry Brignull</span><span>Dark Patterns, deceptive.design, 2010</span></li>
+                        <li><span class="termo">Crisostomo et al.</span><span>Ética, SAGAH, 2018</span></li>
+                        <li><span class="termo">A. W. Ghillyer</span><span>Ética nos negócios, AMGH, 2015</span></li>
+                        <li><span class="termo">ABNT</span><span>normas de formatação do texto acadêmico</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Mais projetos</h2></div>
+            <div class="vizinhos mono">
+                <a href="projetos.html">&larr; todos os projetos</a>
+                <a href="estudos-loja-vinhos.html">Banco de uma loja de vinhos &rarr;</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Voltar para o início">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>início</span>
+    </a>
+
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projetos</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">atualizado em 16 nov 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/rodape.js"></script>
+    <script src="script/estudos.js"></script>
+</body>
+
+</html>

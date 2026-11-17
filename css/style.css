@@ -1,0 +1,2526 @@
+/* style.css - usado em todas as páginas
+   cores: fundo #0e0e0e, texto #b5b5b5, títulos #f0f0f0, verde #3ecf8e
+   fontes: reddit sans (texto) e reddit mono (detalhes) */
+
+/* medidas que se repetem */
+:root {
+    --lado: 20px;
+    --curva: cubic-bezier(.16, 1, .3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0e0e0e;
+    color: #b5b5b5;
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* coluna do meio, com as linhas dos lados */
+.coluna {
+    max-width: 672px;
+    margin: 0 auto;
+    border-left: 1px solid #222222;
+    border-right: 1px solid #222222;
+}
+
+/* cada seção, com linha embaixo */
+.bloco {
+    border-bottom: 1px solid #222222;
+}
+
+.bloco .coluna {
+    padding: 18px var(--lado);
+}
+
+/* título das seções (listrado fino) */
+.faixa {
+    border-bottom: 1px solid #222222;
+    background-image: repeating-linear-gradient(-45deg, transparent 0 2px, rgba(255, 255, 255, .035) 2px 3px);
+}
+
+.faixa .coluna {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 var(--lado);
+}
+
+.faixa h2 {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+.faixa .coluna.com-direita {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1,
+h3 {
+    color: #f0f0f0;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+b,
+strong {
+    color: #f0f0f0;
+    font-weight: 600;
+}
+
+i,
+em {
+    color: #e0e0e0;
+}
+
+/* texto corrido */
+.texto {
+    font-size: 14px;
+    color: #a5a5a5;
+    line-height: 1.625;
+}
+
+.mono {
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: #6e6e6e;
+}
+
+/* links com sublinhado pontilhado */
+a {
+    color: #e0e0e0;
+    text-decoration: none;
+    border-bottom: 1px dotted #555555;
+    /* linha que cresce no hover */
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: color .25s var(--curva), border-color .25s var(--curva), background-size .25s var(--curva);
+}
+
+a:hover {
+    color: #ffffff;
+    border-bottom-color: transparent;
+    background-size: 100% 1px;
+}
+
+/* menu */
+.menu .coluna {
+    padding: 22px var(--lado) 10px;
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 12.5px;
+}
+
+.menu a {
+    color: #6e6e6e;
+    border-bottom: none;
+    margin-right: 14px;
+}
+
+.menu a:hover {
+    color: #f0f0f0;
+}
+
+.menu a.ativo {
+    color: #f0f0f0;
+}
+
+.menu a.ativo::before {
+    content: '› ';
+}
+
+/* topo das páginas */
+.topo .coluna {
+    padding: 32px var(--lado) 24px;
+}
+
+.topo h1 {
+    font-size: 18px;
+}
+
+.topo .papel {
+    color: #6e6e6e;
+    margin-bottom: 14px;
+}
+
+.topo .texto {
+    margin-bottom: 10px;
+}
+
+.ponto-verde {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #3ecf8e;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+
+
+.botao-texto {
+    background-color: transparent;
+    border: none;
+    color: #9a9a9a;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.botao-texto:hover {
+    color: #ffffff;
+}
+
+/* este site */
+#detalhes {
+    display: none;
+    margin-top: 12px;
+}
+
+#detalhes h3 {
+    font-size: 13.5px;
+    margin-top: 12px;
+}
+
+#detalhes ul {
+    padding-left: 20px;
+    font-size: 13.5px;
+}
+
+/* formulário */
+.campo {
+    margin-bottom: 16px;
+}
+
+.campo label.titulo {
+    display: block;
+    font-size: 13px;
+    color: #e0e0e0;
+    margin-bottom: 2px;
+}
+
+.campo input[type=text],
+.campo input[type=email],
+.campo input[type=tel],
+.campo input[type=date],
+.campo select {
+    width: 100%;
+    background-color: #0e0e0e;
+    color: #e0e0e0;
+    border: none;
+    border-bottom: 1px solid #2e2e2e;
+    padding: 7px 0;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-bottom-color: #f0f0f0;
+}
+
+.campo select option {
+    background-color: #0e0e0e;
+}
+
+::placeholder {
+    color: #4e4e4e;
+}
+
+.campo .opcao {
+    display: inline-block;
+    margin-right: 16px;
+    font-size: 13.5px;
+    cursor: pointer;
+}
+
+.campo .erro {
+    display: block;
+    color: #e57373;
+    font-size: 12.5px;
+    margin-top: 3px;
+}
+
+.aviso-form {
+    display: none;
+    color: #e57373;
+    border-left: 2px solid #e57373;
+    padding-left: 10px;
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+
+.botao {
+    background-color: #f0f0f0;
+    color: #0e0e0e;
+    border: 1px solid #f0f0f0;
+    border-radius: 3px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: background-color .25s var(--curva);
+}
+
+.botao:hover {
+    background-color: #c8c8c8;
+}
+
+.botao.contorno {
+    background-color: transparent;
+    color: #b5b5b5;
+    border-color: #2e2e2e;
+}
+
+.botao.contorno:hover {
+    border-color: #6e6e6e;
+}
+
+/* formAction */
+.saudacao {
+    color: #f0f0f0;
+    margin-bottom: 12px;
+}
+
+.sem-dados {
+    display: none;
+    color: #e57373;
+    margin-bottom: 12px;
+}
+
+.url-recebida {
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: #6e6e6e;
+    word-break: break-all;
+    margin-bottom: 14px;
+}
+
+#tabelaDados {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+    font-size: 13.5px;
+}
+
+#tabelaDados th,
+#tabelaDados td {
+    text-align: left;
+    padding: 7px 0;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+#tabelaDados th {
+    width: 42%;
+    color: #6e6e6e;
+    font-weight: normal;
+}
+
+/* rodapé */
+.rodape {
+    border-top: 1px solid #222222;
+}
+
+.rodape .coluna {
+    padding: 32px var(--lado) 32px;
+}
+
+.rodape .linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 24px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.rodape a.nome-site {
+    border-bottom: none;
+}
+
+.rodape .nome-site {
+    color: #f0f0f0;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -.02em;
+}
+
+.rodape .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.rodape .links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #8a8a8a;
+    border-bottom: none;
+}
+
+.rodape .links a:hover {
+    color: #f0f0f0;
+}
+
+/* celular */
+@media (max-width: 600px) {
+    :root {
+        --lado: 16px;
+    }
+
+    /* coluna afastada da borda: as duas linhas laterais aparecem */
+    .coluna {
+        margin: 0 8px;
+    }
+}
+
+/* ajustes */
+.bloco .coluna.sem-margem {
+    padding: 0;
+}
+
+.bloco.sem-linha {
+    border-bottom: none;
+}
+
+/* ============ página única (index) ============ */
+
+/* nada passa da largura da tela (hidden para safari antigo, clip nos demais) */
+html,
+body {
+    overflow-x: hidden;
+}
+
+@supports (overflow-x: clip) {
+    html,
+    body {
+        overflow-x: clip;
+    }
+}
+
+.pagina {
+    padding-bottom: 32px;
+}
+
+.pagina section {
+    margin-top: 16px;
+}
+
+/* depois da grade da stack a faixa vem colada, como na referência */
+.pagina section.colada {
+    margin-top: 0;
+}
+
+/* topo */
+.intro {
+    padding: 32px var(--lado) 0;
+}
+
+.intro h1 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    letter-spacing: -.02em;
+}
+
+.intro .papel {
+    font-size: 14px;
+    color: #6e6e6e;
+    margin: 2px 0 16px;
+}
+
+.intro .texto {
+    margin-bottom: 12px;
+}
+
+/* faixa listrada que vai de ponta a ponta da tela */
+.pagina .faixa {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 var(--lado);
+    border: none;
+    background: none;
+    isolation: isolate;
+}
+
+.pagina .faixa::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+    background-image: repeating-linear-gradient(-45deg, transparent 0 2px, rgba(255, 255, 255, .03) 2px 3px);
+    animation: listras 60s linear infinite;
+    z-index: -1;
+}
+
+@keyframes listras {
+    to {
+        background-position: -42.4px -42.4px;
+    }
+}
+
+.pagina .faixa h2 {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #a1a1a1;
+}
+
+.recuo {
+    padding: 16px var(--lado);
+}
+
+/* stack: grade com cruzes nos encontros */
+.stack {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.stack::before,
+.stack::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    border-top: 1px solid #222222;
+    pointer-events: none;
+}
+
+.stack::before {
+    top: -1px;
+}
+
+.stack::after {
+    bottom: 0;
+}
+
+.ferramenta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 129px;
+    padding: 0 16px;
+    border-right: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+}
+
+.ferramenta:nth-child(4n) {
+    border-right: none;
+}
+
+.ferramenta:nth-child(n+5) {
+    border-bottom: none;
+}
+
+/* xadrez leve */
+.ferramenta:nth-child(odd):nth-child(-n+4),
+.ferramenta:nth-child(even):nth-child(n+5) {
+    background-color: #161616;
+}
+
+/* ícones das ferramentas (simple icons, cc0) */
+.ferramenta .icone {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 4px;
+    fill: rgba(225, 225, 225, .6);
+    transition: fill .25s var(--curva), transform .25s var(--curva);
+}
+
+.ferramenta:hover .icone {
+    fill: rgba(240, 240, 240, .95);
+    transform: translateY(-2px);
+}
+
+.ferramenta .nome {
+    font-size: 10px;
+    font-weight: 500;
+    color: #a1a1a1;
+    white-space: nowrap;
+}
+
+/* cruz "+" nos cantos de dentro (linha de cima, sem a última coluna) */
+.ferramenta:nth-child(-n+3)::after {
+    content: '+';
+    position: absolute;
+    right: -12px;
+    bottom: -12px;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    text-align: center;
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 16px;
+    color: #4a4a4a;
+    z-index: 1;
+}
+
+/* experiência */
+.xp {
+    padding: 20px var(--lado) 4px;
+}
+
+.xp-empresa {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.xp-empresa:last-child {
+    margin-bottom: 0;
+}
+
+.xp-linha {
+    position: absolute;
+    left: 12px;
+    top: 24px;
+    bottom: -20px;
+    width: 1px;
+}
+
+.xp-empresa:last-child .xp-linha {
+    bottom: 0;
+}
+
+.xp-linha,
+.xp-luz {
+    background-image: linear-gradient(to bottom, #2a2a2a 50%, transparent 50%);
+    background-size: 1px 8px;
+}
+
+/* faixa de luz que acompanha a rolagem (máscara definida no index.js) */
+.xp-luz {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to bottom, rgba(240, 240, 240, .85) 50%, transparent 50%);
+    -webkit-mask-image: linear-gradient(transparent, transparent);
+    mask-image: linear-gradient(transparent, transparent);
+}
+
+.xp-bolinha {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: rgba(240, 240, 240, .9);
+    box-shadow: 0 0 4px rgba(240, 240, 240, .5);
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.xp-cabeca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    position: relative;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #222222;
+    border-radius: 6px;
+    background-color: #121212;
+    color: #d0d0d0;
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 9.5px;
+    font-weight: 500;
+    z-index: 1;
+}
+
+.xp-cabeca h3 {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    letter-spacing: -.01em;
+}
+
+/* ponto verde de "atual", pulsando */
+.ponto-atual {
+    position: relative;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #3ecf8e;
+    flex: none;
+}
+
+.ponto-atual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: #3ecf8e;
+    opacity: .6;
+    animation: pulso 1.4s cubic-bezier(0, 0, .2, 1) infinite;
+}
+
+@keyframes pulso {
+    75%,
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+.xp-meta {
+    padding: 2px 0 0 36px;
+    font-size: 11px;
+    letter-spacing: -.01em;
+}
+
+.xp ul {
+    list-style: none;
+}
+
+.xp-cargo {
+    position: relative;
+    padding: 10px 0 0 36px;
+}
+
+/* curva tracejada que liga o cargo à linha */
+.ligacao,
+.ligacao-luz {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    width: 28px;
+    height: 26px;
+    overflow: visible;
+    fill: none;
+    stroke-width: 1;
+    pointer-events: none;
+}
+
+.ligacao path {
+    stroke: #2a2a2a;
+    stroke-dasharray: 4 4;
+    transition: stroke .2s ease-out;
+}
+
+.xp-cargo.aberto .ligacao path,
+.xp-cargo:hover .ligacao path {
+    stroke: rgba(240, 240, 240, .5);
+}
+
+.ligacao-luz path {
+    stroke: rgba(240, 240, 240, .7);
+    stroke-dasharray: 4 4;
+}
+
+.ligacao-luz {
+    -webkit-mask-image: linear-gradient(transparent, transparent);
+    mask-image: linear-gradient(transparent, transparent);
+}
+
+/* bolinha que corre pela curva conforme a rolagem: verde no emprego atual */
+.pingo {
+    fill: rgba(240, 240, 240, .7);
+    stroke: none;
+    opacity: 0;
+    offset-path: path('M0.5 0 V20 Q0.5 25.5 6 25.5 H28');
+    offset-distance: 0%;
+}
+
+.xp-empresa.atual .pingo {
+    fill: #3ecf8e;
+}
+
+.cargo-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.cargo-topo h4 {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #f0f0f0;
+}
+
+.cargo-topo .mono {
+    margin-top: 2px;
+    font-size: 11px;
+    letter-spacing: -.01em;
+    transition: color .15s;
+}
+
+.cargo-topo:hover .mono {
+    color: #b5b5b5;
+}
+
+.seta {
+    flex: none;
+    width: 14px;
+    height: 14px;
+    margin-top: 2px;
+    fill: none;
+    stroke: #555555;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .25s var(--curva), stroke .15s;
+}
+
+.cargo-topo:hover .seta {
+    stroke: #f0f0f0;
+}
+
+.xp-cargo.aberto .seta {
+    transform: rotate(180deg);
+}
+
+/* descrição abre e fecha animando a altura */
+.descricao {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    padding: 0 12px;
+    transition: grid-template-rows .35s var(--curva), opacity .25s var(--curva);
+}
+
+.descricao-dentro {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.xp-cargo.aberto .descricao {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.descricao p {
+    padding-top: 18px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #9a9a9a;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 14px 0 6px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    line-height: 16.5px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    font-size: 11px;
+    color: rgba(240, 240, 240, .8);
+    transition: border-color .15s, color .15s;
+}
+
+.tag:hover {
+    border-color: rgba(255, 255, 255, .2);
+    color: #f0f0f0;
+}
+
+/* o que ainda estou aprendendo: verde com listras andando */
+.tag.aprendendo {
+    border-color: rgba(62, 207, 142, .4);
+    color: #5fdba6;
+    background-image: repeating-linear-gradient(-45deg, transparent 0 2px, rgba(62, 207, 142, .12) 2px 3px);
+    animation: listras-tag .6s linear infinite;
+    cursor: help;
+}
+
+@keyframes listras-tag {
+    to {
+        background-position-x: 4.24px;
+    }
+}
+
+/* projetos: cards */
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #222222;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #222222;
+    background-color: #131313;
+}
+
+.card:nth-child(odd) {
+    border-right: 1px solid #222222;
+}
+
+.card-previa {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: radial-gradient(120% 80% at 50% 0%, #1b1b1b, #131313 70%);
+}
+
+/* fade da prévia para o card */
+.card-previa::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50%;
+    background: linear-gradient(to top, #131313 20%, rgba(19, 19, 19, .75), transparent);
+    pointer-events: none;
+}
+
+/* "janela" do print, sobe no hover */
+.janela {
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    top: 10%;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    background-color: #0a0a0a;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 24px 48px -20px rgba(0, 0, 0, .8);
+    transition: transform .5s var(--curva);
+}
+
+.card:hover .janela {
+    transform: translateY(-8px);
+}
+
+.janela .mono {
+    font-size: 11px;
+    color: #4a4a4a;
+}
+
+.selo {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 20px;
+    background-color: rgba(14, 14, 14, .8);
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 9px;
+    letter-spacing: .03em;
+    color: #8a8a8a;
+    transition: color .2s;
+}
+
+.card:hover .selo {
+    color: #f0f0f0;
+}
+
+.card-corpo {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: -12px;
+    padding: 0 var(--lado) 16px;
+}
+
+/* gráfico atrás do rodapé do card */
+.grafico {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    z-index: -1;
+    opacity: .7;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 45%);
+    mask-image: linear-gradient(to right, transparent, #000 45%);
+    clip-path: inset(0 100% 0 0);
+    transition: opacity .3s, clip-path 1.2s cubic-bezier(.65, 0, .35, 1);
+}
+
+.grafico.visivel {
+    clip-path: inset(0);
+}
+
+.card:hover .grafico {
+    opacity: 1;
+}
+
+.grafico .traco {
+    fill: none;
+    stroke-width: 1.25;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+    filter: drop-shadow(0 0 3px rgba(62, 207, 142, .55));
+}
+
+.card h3 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    letter-spacing: -.02em;
+}
+
+.card-texto {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 19.5px;
+    color: #a1a1a1;
+    min-height: 39px;
+    margin-bottom: 8px;
+}
+
+.card-pe {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px dashed #222222;
+}
+
+.card-pe .mono {
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.claro {
+    color: rgba(240, 240, 240, .8);
+}
+
+.apagado {
+    color: #3a3a3a;
+}
+
+/* bolinhas das tecnologias, abrem o nome no hover */
+.bolhas {
+    display: flex;
+    list-style: none;
+}
+
+.bolhas li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    min-width: 24px;
+    margin-left: -6px;
+    padding: 0 5px;
+    border: 1px solid #2a2a2a;
+    border-radius: 20px;
+    background-color: #0e0e0e;
+    box-shadow: 0 0 0 2px #131313;
+}
+
+.bolhas li:hover {
+    z-index: 2;
+}
+
+.sigla {
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 9px;
+    color: #b5b5b5;
+    margin: 0 auto;
+}
+
+.rotulo {
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 10px;
+    color: #8a8a8a;
+    opacity: 0;
+    transition: max-width .2s cubic-bezier(.23, 1, .32, 1), opacity .2s, padding .2s;
+}
+
+.bolhas li:hover .rotulo {
+    max-width: 90px;
+    padding-left: 4px;
+    opacity: 1;
+}
+
+/* projetos: lista compacta */
+.lista-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 15px var(--lado);
+    border-bottom: 1px solid #222222;
+    font-size: 14px;
+    transition: background-color .25s var(--curva);
+}
+
+.lista-item:hover {
+    background-color: #121212;
+}
+
+.lista-item b {
+    flex: none;
+    font-weight: 500;
+}
+
+.lista-item span:not(.mono) {
+    flex: 1;
+    min-width: 0;
+    color: #6e6e6e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lista-item .mono {
+    flex: none;
+    margin-left: auto;
+    font-size: 11px;
+}
+
+/* formação e certificações */
+.itens {
+    padding: 16px var(--lado) 0;
+}
+
+.item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.item .logo {
+    margin-top: 1px;
+}
+
+.item h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.item .mono {
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.item .cresce {
+    flex: 1;
+    min-width: 0;
+}
+
+.item .cresce .mono {
+    white-space: normal;
+}
+
+.cert-extra {
+    display: none;
+}
+
+#verCertificacoes {
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+/* celular */
+@media (max-width: 600px) {
+    .ferramenta .icone {
+        width: 32px;
+        height: 32px;
+    }
+
+    .stack {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .ferramenta:nth-child(4n) {
+        border-right: 1px solid #222222;
+    }
+
+    .ferramenta:nth-child(2n) {
+        border-right: none;
+    }
+
+    .ferramenta:nth-child(n+5) {
+        border-bottom: 1px solid #222222;
+    }
+
+    .ferramenta:nth-child(n+7) {
+        border-bottom: none;
+    }
+
+    /* xadrez em 2 colunas */
+    .ferramenta:nth-child(odd):nth-child(-n+4),
+    .ferramenta:nth-child(even):nth-child(n+5) {
+        background-color: transparent;
+    }
+
+    .ferramenta:nth-child(4n+1),
+    .ferramenta:nth-child(4n+4) {
+        background-color: #161616;
+    }
+
+    /* cruzes: coluna da esquerda, menos a última linha */
+    .ferramenta:nth-child(-n+3)::after {
+        content: none;
+    }
+
+    .ferramenta:nth-child(odd):nth-child(-n+5)::after {
+        content: '+';
+        position: absolute;
+        right: -12px;
+        bottom: -12px;
+        width: 24px;
+        height: 24px;
+        line-height: 22px;
+        text-align: center;
+        font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+        font-size: 16px;
+        color: #4a4a4a;
+        z-index: 1;
+    }
+
+    /* no celular os cards e a lista ganham margem, como na referência */
+    .cards {
+        grid-template-columns: 1fr;
+        margin: 0 12px;
+    }
+
+    .lista {
+        margin: 0 12px;
+    }
+
+    .lista-item {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .card:nth-child(odd) {
+        border-right: none;
+    }
+
+    .lista-item span:not(.mono) {
+        display: none;
+    }
+}
+
+/* quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .grafico {
+        clip-path: none;
+    }
+}
+
+/* seta dos links: fonte mono para o iphone não trocar por emoji */
+.flecha {
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: .85em;
+    font-variant-emoji: text;
+}
+
+/* link de volta nas páginas internas */
+.voltar {
+    display: inline-block;
+    margin-bottom: 16px;
+    border-bottom: none;
+}
+
+/* entrada em cascata: cards e linhas da lista sobem e aparecem (index.js) */
+.surge {
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+.surge.surgiu {
+    animation: surgir .4s cubic-bezier(.16, 1, .3, 1) both;
+    animation-delay: var(--atraso, 0ms);
+}
+
+@keyframes surgir {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* o "print" do card entra depois, como se estivesse carregando */
+.card .janela {
+    opacity: 0;
+}
+
+.card.surgiu .janela {
+    opacity: 1;
+    transition: opacity .3s ease-out calc(var(--atraso, 0ms) + 250ms), transform .5s var(--curva);
+}
+
+/* cursor do gráfico: linha e ponto que seguem o dedo/mouse */
+.cursor-grafico,
+.ponto-grafico {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .2s cubic-bezier(.23, 1, .32, 1);
+    z-index: -1;
+}
+
+.cursor-grafico {
+    bottom: 0;
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom, transparent, rgba(62, 207, 142, .6));
+}
+
+.ponto-grafico {
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    border-radius: 50%;
+    background-color: #3ecf8e;
+    box-shadow: 0 0 6px rgba(62, 207, 142, .7), 0 0 0 2px #131313;
+}
+
+.card-corpo.mirando .cursor-grafico {
+    opacity: .5;
+}
+
+.card-corpo.mirando .ponto-grafico {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .surge,
+    .card .janela {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* estudos: aprendizados numerados por matéria */
+.materia .recuo .mono {
+    margin-bottom: 6px;
+}
+
+.aprendizados {
+    list-style: none;
+    padding: 0 var(--lado);
+    margin: 0;
+}
+
+.aprendizado {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px dashed #222222;
+}
+
+.aprendizado .numero {
+    flex: none;
+    width: 20px;
+    padding-top: 1px;
+    color: #3ecf8e;
+}
+
+.aprendizado h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.aprendizado .texto {
+    color: #a1a1a1;
+}
+
+.sub {
+    padding: 12px var(--lado) 8px;
+    border-top: 1px solid #222222;
+}
+
+a.lista-item {
+    border-bottom: 1px solid #222222;
+    background-image: none;
+    color: inherit;
+}
+
+code {
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 12px;
+    padding: 1px 4px;
+    border: 1px solid #222222;
+    border-radius: 4px;
+    background-color: #131313;
+    color: #d0d0d0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* estudos: título longo quebra linha no celular */
+.materia .lista-item b,
+a.lista-item b {
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+/* projetos: grade com capa, como portfólio de designer */
+.obras {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #222222;
+}
+
+.obra {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-bottom: 1px solid #222222;
+    background-image: none;
+    background-color: #131313;
+    color: inherit;
+    transition: background-color .25s var(--curva);
+}
+
+.obra:nth-child(odd) {
+    border-right: 1px solid #222222;
+}
+
+a.obra:hover {
+    background-color: #161616;
+}
+
+/* capa 16:9. sem <img>, mostra o nome sobre pontinhos */
+.capa {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid #222222;
+    background-color: #111111;
+}
+
+.capa:not(:has(img)) {
+    background-image: radial-gradient(rgba(255, 255, 255, .09) 1px, transparent 1.2px);
+    background-size: 14px 14px;
+}
+
+.capa:not(:has(img))::after {
+    content: attr(data-nome);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -.03em;
+    color: #f0f0f0;
+}
+
+.capa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s var(--curva);
+}
+
+a.obra:hover .capa img {
+    transform: scale(1.03);
+}
+
+.obra-corpo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px var(--lado) 16px;
+}
+
+.obra h3 {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.obra .mono {
+    font-size: 11px;
+}
+
+/* ainda não está pronto: não abre */
+.obra-breve .capa {
+    opacity: .5;
+}
+
+.selo-breve {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    padding: 3px 8px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 20px;
+    background-color: rgba(14, 14, 14, .85);
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 10px;
+    color: #a1a1a1;
+}
+
+/* página do projeto */
+.capa-grande {
+    margin: 20px var(--lado) 16px;
+    border: 1px solid #222222;
+    border-radius: 8px;
+}
+
+.capa-grande:not(:has(img))::after {
+    font-size: 40px;
+}
+
+.tags.recuo {
+    padding: 16px var(--lado);
+}
+
+.atividade {
+    position: relative;
+    isolation: isolate;
+    height: 120px;
+    margin: 0 var(--lado);
+    border-bottom: 1px solid #222222;
+}
+
+.atividade .grafico {
+    height: 100%;
+    opacity: 1;
+}
+
+.atividade .cursor-grafico {
+    height: 100%;
+}
+
+.atividade.mirando .cursor-grafico {
+    opacity: .5;
+}
+
+.atividade.mirando .ponto-grafico {
+    opacity: 1;
+}
+
+.legenda {
+    padding: 8px var(--lado) 0;
+}
+
+.vizinhos {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px var(--lado);
+}
+
+@media (max-width: 600px) {
+    .obras {
+        grid-template-columns: 1fr;
+        margin: 0 12px;
+    }
+
+    .obra:nth-child(odd) {
+        border-right: none;
+    }
+
+    .capa-grande:not(:has(img))::after {
+        font-size: 32px;
+    }
+}
+
+/* estudos: post em destaque */
+.destaque {
+    display: block;
+    margin: 16px var(--lado) 8px;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    overflow: hidden;
+    background-image: none;
+    background-color: #131313;
+    color: inherit;
+    transition: background-color .25s var(--curva);
+}
+
+.destaque:hover {
+    background-color: #161616;
+}
+
+.destaque .capa:not(:has(img))::after {
+    font-size: 36px;
+}
+
+.destaque-corpo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px var(--lado) 18px;
+}
+
+.destaque h3 {
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -.02em;
+}
+
+.destaque .texto {
+    color: #a1a1a1;
+}
+
+.ler {
+    color: #d0d0d0;
+}
+
+.nota-verde {
+    color: #3ecf8e;
+}
+
+.apagado-item b {
+    color: #6e6e6e;
+}
+
+/* post */
+.titulo-post {
+    margin-top: 6px;
+}
+
+.post {
+    padding: 8px var(--lado) 24px;
+}
+
+.post h2 {
+    margin: 24px 0 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #f0f0f0;
+}
+
+.post p {
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.citacao {
+    margin: 24px 0 8px;
+    padding-left: 16px;
+    border-left: 2px solid #3ecf8e;
+    font-size: 19px;
+    line-height: 1.45;
+    letter-spacing: -.01em;
+    color: #f0f0f0;
+}
+
+.semana {
+    margin-left: 6px;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.referencias {
+    list-style: none;
+    padding: 0;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* devolutiva do professor */
+.devolutiva {
+    margin: 16px var(--lado) 8px;
+    padding: 20px;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    background: radial-gradient(120% 60% at 100% 0%, rgba(62, 207, 142, .07), transparent 60%), #131313;
+}
+
+.devolutiva blockquote {
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #d0d0d0;
+}
+
+.devolutiva blockquote::before {
+    content: '“';
+    color: #3ecf8e;
+}
+
+.devolutiva blockquote::after {
+    content: '”';
+    color: #3ecf8e;
+}
+
+.assinatura {
+    margin-top: 4px;
+}
+
+/* posts: código e prints */
+.codigo {
+    margin: 16px 0;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #111111;
+}
+
+.codigo figcaption {
+    padding: 8px 12px;
+    border-bottom: 1px solid #222222;
+    font-size: 10px;
+}
+
+.codigo pre {
+    margin: 0;
+    padding: 12px;
+    overflow-x: auto;
+}
+
+.codigo code {
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: #c8c8c8;
+    white-space: pre;
+}
+
+.figura {
+    margin: 12px 0 4px;
+}
+
+.figura img {
+    width: 100%;
+    border: 1px solid #222222;
+    border-radius: 6px;
+}
+
+.figura figcaption {
+    margin-top: 6px;
+    font-size: 10px;
+}
+
+/* projetos: link pra página com todos */
+.cta-projetos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px var(--lado);
+    border-bottom: 1px solid #222222;
+    background-image: none;
+    color: #f0f0f0;
+    font-weight: 500;
+    transition: background-color .25s var(--curva);
+}
+
+.cta-projetos:hover {
+    background-color: #121212;
+}
+
+.cta-projetos .mono {
+    color: #3ecf8e;
+}
+
+/* filtro por tipo */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 16px var(--lado);
+}
+
+.filtro {
+    padding: 4px 10px;
+    border: 1px solid #2a2a2a;
+    border-radius: 20px;
+    background: none;
+    font: inherit;
+    font-size: 11px;
+    color: #8a8a8a;
+    cursor: pointer;
+    transition: color .2s, border-color .2s, background-color .2s;
+}
+
+.filtro:hover {
+    color: #f0f0f0;
+}
+
+.filtro.ativo {
+    border-color: rgba(62, 207, 142, .4);
+    background-color: rgba(62, 207, 142, .08);
+    color: #3ecf8e;
+}
+
+.obra[hidden] {
+    display: none;
+}
+
+.obras.filtrado .obra:nth-child(odd) {
+    border-right: none;
+}
+
+.obras.filtrado .obra.coluna-esq {
+    border-right: 1px solid #222222;
+}
+
+@media (max-width: 600px) {
+    .obras.filtrado .obra.coluna-esq {
+        border-right: none;
+    }
+
+    .cta-projetos {
+        margin: 0 12px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
+
+/* o que aprendi: código e ferramentas */
+.aprendi {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+}
+
+.aprendi-col {
+    padding: 16px var(--lado) 8px;
+}
+
+.aprendi-col + .aprendi-col {
+    border-left: 1px solid #222222;
+}
+
+.aprendi-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.aprendi-col li {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 0;
+    border-top: 1px dashed #222222;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #8a8a8a;
+}
+
+.termo {
+    color: #f0f0f0;
+    font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .aprendi {
+        grid-template-columns: 1fr;
+    }
+
+    .aprendi-col + .aprendi-col {
+        border-left: none;
+        border-top: 1px solid #222222;
+    }
+}
+
+/* botão fixo de volta pro início (páginas internas) */
+.flutuante {
+    position: fixed;
+    right: max(20px, env(safe-area-inset-right));
+    bottom: max(20px, env(safe-area-inset-bottom));
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px 10px 12px;
+    border: 1px solid #2a2a2a;
+    border-radius: 999px;
+    background-image: none;
+    background-color: rgba(19, 19, 19, .85);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, .8);
+    font-family: 'Reddit Sans', 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: #d0d0d0;
+    transition: color .2s, border-color .2s, transform .3s var(--curva);
+}
+
+.flutuante svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.flutuante:hover {
+    border-color: rgba(62, 207, 142, .5);
+    color: #3ecf8e;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .flutuante {
+        right: max(16px, env(safe-area-inset-right));
+        bottom: max(16px, env(safe-area-inset-bottom));
+    }
+}
+
+/* experiência: entregas e ferramentas de cada cargo */
+.entregas {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.entregas li {
+    position: relative;
+    padding: 3px 0 3px 14px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #a1a1a1;
+}
+
+.entregas li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 5px;
+    height: 1px;
+    background-color: #3ecf8e;
+}
+
+.rotulo-tags {
+    margin-top: 12px;
+    font-size: 10px;
+}
+
+.rotulo-tags + .tags {
+    padding-top: 6px;
+}
+
+/* galeria de imagens das páginas de projeto */
+.galeria {
+    display: grid;
+    gap: 16px;
+    padding: 8px var(--lado) 24px;
+}
+
+.galeria.g1 { grid-template-columns: 1fr; }
+.galeria.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.galeria.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+
+.galeria .figura {
+    margin: 0;
+}
+
+.galeria .figura a {
+    display: block;
+}
+
+.galeria .figura a:hover img {
+    border-color: #3ecf8e;
+}
+
+/* aviso de dados fictícios */
+.aviso {
+    margin-top: 12px;
+    padding: 8px 12px;
+    border-left: 2px solid #3ecf8e;
+    background: #141414;
+    color: #b5b5b5;
+    font-size: 11px;
+}
+
+@media (max-width: 600px) {
+    .galeria.g2,
+    .galeria.g3 { grid-template-columns: 1fr; }
+}
+
+/* logo real da empresa no lugar da sigla */
+.logo-img {
+    padding: 3px;
+}
+
+.logo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.xp-cabeca .logo-img {
+    width: 28px;
+    height: 28px;
+}
+
+/* categoria do projeto: quadrado verde de baixa opacidade, igual às tags em destaque */
+.obra .tipo {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 1px 6px;
+    border: 1px solid rgba(62, 207, 142, .4);
+    background-color: rgba(62, 207, 142, .1);
+    color: #5fdba6;
+}
+
+/* peças: grade com bordas, como a de projetos */
+.pecas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid #222222;
+}
+
+.peca {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+    background-image: none;
+}
+
+.peca:nth-child(3n) {
+    border-right: none;
+}
+
+.peca-img {
+    aspect-ratio: 3 / 4;
+    padding: 20px;
+    background-image: radial-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px);
+    background-size: 12px 12px;
+    overflow: hidden;
+}
+
+.peca-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 10px;
+    transition: transform .3s;
+}
+
+.peca.deitada .peca-img img {
+    object-fit: contain;
+    object-position: center;
+}
+
+.peca:hover .peca-img img {
+    transform: translateY(-4px);
+}
+
+.peca .mono {
+    margin-top: auto;
+    padding: 12px var(--lado) 14px;
+    border-top: 1px solid #222222;
+    font-size: 11px;
+    color: #a1a1a1;
+}
+
+.peca:hover .mono {
+    color: #3ecf8e;
+}
+
+@media (max-width: 600px) {
+    .pecas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .peca:nth-child(3n) { border-right: 1px solid #222222; }
+    .peca:nth-child(2n) { border-right: none; }
+    .peca-img { padding: 12px; }
+}
+
+/* código continua monoespaçado */
+pre, code {
+    font-family: 'Reddit Mono', Consolas, monospace;
+}
+
+/* experiências extras: cortadas com degradê até o "ver mais" */
+.xp-extra {
+    position: relative;
+    max-height: 150px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+
+.xp-extra.aberto {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+.ver-mais {
+    display: inline-flex;
+    gap: 8px;
+    margin: 4px var(--lado) 24px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #3ecf8e;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.ver-mais-seta {
+    display: inline-block;
+    transition: transform .2s;
+}
+
+.ver-mais[aria-expanded="true"] .ver-mais-seta {
+    transform: rotate(90deg);
+}
+
+.ver-mais:hover .ver-mais-texto {
+    text-decoration: underline;
+}
+
+/* certificações agrupadas por instituição */
+.cert-grupo h3 {
+    align-items: center;
+    gap: 8px;
+}
+
+.cert-grupo .qtd {
+    font-size: 11px;
+    font-weight: 400;
+    color: #6e6e6e;
+}
+
+.cursos {
+    margin-top: 6px;
+    list-style: none;
+}
+
+.cursos li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 5px 0;
+    border-top: 1px dashed #222222;
+    font-size: 13px;
+    color: #b5b5b5;
+}
+
+.cursos li .mono {
+    flex: none;
+    font-size: 11px;
+    color: #6e6e6e;
+}
+
+/* curso técnico em destaque: mesmo verde de baixa opacidade das tags */
+.tipo-cert {
+    padding: 1px 6px;
+    border: 1px solid rgba(62, 207, 142, .4);
+    background-color: rgba(62, 207, 142, .1);
+    color: #5fdba6;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.cert-destaque .cursos li {
+    color: #f0f0f0;
+}
+
+/* cursos da unifael recolhidos */
+.cursos-recolhidos {
+    margin-top: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.ver-mais-cert {
+    margin: 6px 0 0;
+    font-size: 13px;
+}
+
+.link-diploma {
+    padding: 0;
+    border: none;
+    background: none;
+    color: #3ecf8e;
+    font: inherit;
+    cursor: pointer;
+}
+
+.link-diploma:hover {
+    text-decoration: underline;
+}
+
+/* ver mais dos cursos em branco */
+.ver-mais-cert {
+    color: #f0f0f0;
+}
+
+/* janela flutuante (diploma) */
+.modal {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(960px, calc(100vw - 32px));
+    max-height: calc(100vh - 32px);
+    padding: 16px;
+    border: 1px solid #222222;
+    border-radius: 10px;
+    background-color: #121212;
+    color: #b5b5b5;
+}
+
+.modal::backdrop {
+    background-color: rgba(0, 0, 0, .75);
+    backdrop-filter: blur(4px);
+}
+
+.modal img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 110px);
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.modal .mono {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #6e6e6e;
+}
+
+.modal-fechar {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    z-index: 1;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #333333;
+    border-radius: 50%;
+    background-color: rgba(14, 14, 14, .9);
+    color: #f0f0f0;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.modal-fechar:hover {
+    border-color: #3ecf8e;
+    color: #3ecf8e;
+}
+
+.modal:not([open]) {
+    display: none;
+}
+
+.modal[open] {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* força a quebra de linha nas tags */
+.tags .quebra {
+    flex-basis: 100%;
+    height: 0;
+    margin-top: -6px;
+}
+
+/* janela menor e mais arredondada */
+.modal {
+    width: min(680px, calc(100vw - 32px));
+    padding: 14px;
+    border-radius: 18px;
+}
+
+.modal img {
+    max-height: calc(100vh - 140px);
+    border-radius: 12px;
+}
+
+.modal-fechar {
+    top: 22px;
+    right: 22px;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+}
+
+.modal img {
+    flex: none;
+    height: auto;
+    max-height: none;
+}
+
+.modal {
+    overflow: auto;
+}
+
+/* currículo em verde na linha de links do topo */
+.intro .link-cv {
+    color: #3ecf8e;
+}
+
+/* resultado em uma linha no card */
+.obra .resultado {
+    font-size: 13px;
+    color: #b5b5b5;
+}
+
+.obra .resultado::before {
+    content: "→ ";
+    color: #3ecf8e;
+}
+
+/* resumo no topo de cada projeto */
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+}
+
+.resumo > div {
+    padding: 16px var(--lado);
+    border-right: 1px solid #222222;
+}
+
+.resumo > div:last-child {
+    border-right: none;
+}
+
+.resumo .mono {
+    margin-bottom: 6px;
+    font-size: 11px;
+    color: #3ecf8e;
+}
+
+.resumo p:last-child {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #d0d0d0;
+}
+
+@media (max-width: 600px) {
+    .resumo { grid-template-columns: 1fr; }
+    .resumo > div { border-right: none; border-bottom: 1px solid #222222; }
+    .resumo > div:last-child { border-bottom: none; }
+}
+
+/* cabeçalho no celular: linkedin e behance juntos na linha de baixo */
+.quebra-celular {
+    display: none;
+}
+
+/* projetos da página inicial recolhidos no celular */
+.obras.recolhida {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 200px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 200px), transparent);
+}
+
+.ver-mais-obras {
+    margin-top: 12px;
+}
+
+.ver-mais-obras[hidden] {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .sep-linha { display: none; }
+    .quebra-celular { display: block; height: 0; }
+}
+
+@media (min-width: 601px) {
+    .ver-mais-obras { display: none; }
+}
+
+/* links do topo sempre numa linha só */
+.links-topo {
+    white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+    .links-topo { font-size: min(11px, 3.2vw); }
+}
+
+/* imagens ampliadas */
+.ampliavel {
+    cursor: zoom-in;
+}
+
+html.visor-aberto {
+    overflow: hidden;
+}
+
+.visor {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: rgba(10, 10, 10, .94);
+    color: #f0f0f0;
+}
+
+.visor::backdrop {
+    background-color: rgba(0, 0, 0, .6);
+    backdrop-filter: blur(6px);
+}
+
+.visor:not([open]) {
+    display: none;
+}
+
+.visor-palco {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 56px 64px 24px;
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.visor-palco img {
+    max-width: 100%;
+    max-height: calc(100dvh - 110px);
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.visor-legenda {
+    font-size: 11px;
+    color: #8a8a8a;
+    text-align: center;
+}
+
+/* infográfico: largura cheia e rolagem */
+.visor.alta .visor-palco {
+    justify-content: flex-start;
+    padding: 0 0 24px;
+}
+
+.visor.alta .visor-palco img {
+    flex: none;
+    width: min(100%, 900px);
+    max-height: none;
+    border-radius: 0;
+}
+
+.visor-fechar,
+.visor-seta {
+    position: fixed;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #333333;
+    border-radius: 50%;
+    background-color: rgba(14, 14, 14, .9);
+    color: #f0f0f0;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.visor-fechar:hover,
+.visor-seta:hover {
+    border-color: #3ecf8e;
+    color: #3ecf8e;
+}
+
+.visor-fechar {
+    top: 14px;
+    right: 14px;
+}
+
+.visor-seta {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.visor-ant {
+    left: 14px;
+}
+
+.visor-prox {
+    right: 14px;
+}
+
+.visor.sozinha .visor-seta {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .visor-palco {
+        padding: 56px 12px 24px;
+    }
+
+    .visor-seta {
+        display: none;
+    }
+}
