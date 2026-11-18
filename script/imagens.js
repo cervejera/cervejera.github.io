@@ -7,12 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const visor = document.createElement('dialog');
     visor.className = 'visor';
-    visor.setAttribute('aria-label', 'imagem ampliada');
+    const EN = document.documentElement.lang === 'en';
+    visor.setAttribute('aria-label', EN ? 'enlarged image' : 'imagem ampliada');
     visor.innerHTML =
         '<div class="visor-palco"><img alt=""><p class="visor-legenda mono"></p></div>' +
-        '<button class="visor-fechar" type="button" aria-label="Fechar">&times;</button>' +
-        '<button class="visor-seta visor-ant" type="button" aria-label="Imagem anterior">&lsaquo;</button>' +
-        '<button class="visor-seta visor-prox" type="button" aria-label="Próxima imagem">&rsaquo;</button>';
+        '<button class="visor-fechar" type="button" aria-label="' + (EN ? 'Close' : 'Fechar') + '">&times;</button>' +
+        '<button class="visor-seta visor-ant" type="button" aria-label="' + (EN ? 'Previous image' : 'Imagem anterior') + '">&lsaquo;</button>' +
+        '<button class="visor-seta visor-prox" type="button" aria-label="' + (EN ? 'Next image' : 'Próxima imagem') + '">&rsaquo;</button>';
     document.body.appendChild(visor);
 
     const palco = visor.querySelector('.visor-palco');

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects · Gustavo Cervejera</title>
+    <meta name="description" content="Work, design and client projects">
+    <!-- prévia ao compartilhar (linkedin, whatsapp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cervejera.github.io/en/projetos.html">
+    <meta property="og:title" content="Projects · Gustavo Cervejera">
+    <meta property="og:description" content="Work, design and client projects">
+    <meta property="og:image" content="https://cervejera.github.io/img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="pt-BR" href="https://cervejera.github.io/projetos.html">
+    <link rel="alternate" hreflang="en" href="https://cervejera.github.io/en/projetos.html">
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina coluna">
+
+        <!-- topo -->
+        <header class="intro">
+            <nav class="idioma mono" aria-label="language"><a href="../projetos.html" hreflang="pt-BR" lang="pt-BR">PT</a><a href="projetos.html" hreflang="en" lang="en" class="ativo" aria-current="true">EN</a></nav>
+            <a class="mono voltar" href="index.html">&larr; home</a>
+            <h1>Projects</h1>
+            <p class="papel">Work, design and client projects</p>
+            <p class="texto">Each one opens a page with the problem, how it was built and what came out of it. College assignments live on the <a href="blog.html">blog</a>.</p>
+        </header>
+
+        <section>
+            <div class="faixa"><h2>All</h2></div>
+            <!-- filtro por ferramenta (filtro.js) -->
+            <div class="filtros mono" data-alvo="obras"><button type="button" class="filtro ativo" data-filtro="todos">all</button><button type="button" class="filtro" data-filtro="design">design</button><button type="button" class="filtro" data-filtro="dados">data</button><button type="button" class="filtro" data-filtro="python">python</button><button type="button" class="filtro" data-filtro="sql">sql</button><button type="button" class="filtro" data-filtro="excel">excel</button></div>
+            <!-- capa 16:9 (1920x1080). sem imagem, o card mostra o nome no fundo pontilhado -->
+            <div class="obras" id="obras">
+                <a class="obra surge" data-tags="python sql dados" href="projeto-pede-ai.html" data-tipo="trabalho">
+                    <div class="capa" data-nome="pede.ai"></div>
+                    <div class="obra-corpo">
+                        <h3>Pede.ai: ordering from Sebrae/PR's contracted vendors</h3>
+                        <p class="mono"><span class="tipo">work</span>python · fastapi · in production</p>
+                        <p class="resultado">orders open in 1.3 s, down from up to 8 s</p>
+                    </div>
+                </a>
+                <a class="obra surge" data-tags="excel dados design" href="projeto-enaex.html" data-tipo="externo">
+                    <div class="capa" data-nome="enaex"></div>
+                    <div class="obra-corpo">
+                        <h3>Enaex: a presentation with 28 charts linked to Excel</h3>
+                        <p class="mono"><span class="tipo">client project</span>excel · powerpoint · 2026</p>
+                        <p class="resultado">28 charts fed by a single spreadsheet</p>
+                    </div>
+                </a>
+                <a class="obra surge" data-tags="design dados excel" href="projeto-infograficos.html" data-tipo="design">
+                    <div class="capa" data-nome="infographics"></div>
+                    <div class="obra-corpo">
+                        <h3>Infographics: Sebrae/PR data made visual</h3>
+                        <p class="mono"><span class="tipo">design</span>illustrator · 2023 to 2026</p>
+                        <p class="resultado">surveys turned into pieces for the press</p>
+                    </div>
+                </a>
+                <a class="obra surge" data-tags="design" href="projeto-concafe.html" data-tipo="design">
+                    <div class="capa" data-nome="concafé"></div>
+                    <div class="obra-corpo">
+                        <h3>ConCafé: event key visual</h3>
+                        <p class="mono"><span class="tipo">design</span>visual identity · 2026</p>
+                        <p class="resultado">full identity for the event</p>
+                    </div>
+                </a>
+                <a class="obra surge" data-tags="design" href="https://www.behance.net/gallery/234045305/SebraePR" data-tipo="design">
+                    <div class="capa" data-nome="sebrae/pr"></div>
+                    <div class="obra-corpo">
+                        <h3>Sebrae/PR: visual communication</h3>
+                        <p class="mono"><span class="tipo">design</span>behance &#x2197;&#xFE0E;</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>home</span>
+    </a>
+
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projects</a><a href="blog.html">blog</a><a href="about.html">this site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">updated nov 16, 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script/rodape.js"></script>
+    <script src="../script/revela.js"></script>
+    <script src="../script/navegacao.js"></script>
+    <script src="../script/filtro.js"></script>
+    <script src="../script/projetos.js"></script>
+</body>
+
+</html>

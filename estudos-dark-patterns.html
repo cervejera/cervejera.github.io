@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dark patterns e o design engineer · Gustavo Cervejera</title>
     <meta name="description" content="Assinar leva dois cliques, cancelar leva dez telas. Um trabalho sobre esse dilema, a solução que defendi e o que a devolutiva do professor me ensinou.">
-    <!-- prévia ao compartilhar (linkedin, whatsapp). ao hospedar, troque og:image por um endereço completo -->
+    <!-- prévia ao compartilhar (linkedin, whatsapp) -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cervejera.github.io/estudos-dark-patterns.html">
     <meta property="og:title" content="Dark patterns e o design engineer · Gustavo Cervejera">
     <meta property="og:description" content="Assinar leva dois cliques, cancelar leva dez telas. Um trabalho sobre esse dilema, a solução que defendi e o que a devolutiva do professor me ensinou.">
-    <meta property="og:image" content="img/og-capa.png">
+    <meta property="og:image" content="https://cervejera.github.io/img/og-capa.png">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="pt-BR" href="https://cervejera.github.io/estudos-dark-patterns.html">
+    <link rel="alternate" hreflang="en" href="https://cervejera.github.io/en/estudos-dark-patterns.html">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +28,8 @@
 
         <!-- topo do post -->
         <header class="intro">
-            <a class="mono voltar" href="projetos.html">&larr; projetos</a>
+            <nav class="idioma mono" aria-label="idioma"><a href="estudos-dark-patterns.html" hreflang="pt-BR" lang="pt-BR" class="ativo" aria-current="true">PT</a><a href="en/estudos-dark-patterns.html" hreflang="en" lang="en">EN</a></nav>
+            <a class="mono voltar" href="blog.html">&larr; blog</a>
             <p class="mono">ética · atp · pucpr 2026 · 4 min de leitura</p>
             <h1 class="titulo-post">Dark patterns e o design engineer</h1>
             <p class="papel">Assinar leva dois cliques, cancelar leva dez telas. Um trabalho sobre esse dilema, a solução
@@ -149,9 +153,9 @@
         </section>
 
         <section>
-            <div class="faixa"><h2>Mais projetos</h2></div>
+            <div class="faixa"><h2>Mais posts</h2></div>
             <div class="vizinhos mono">
-                <a href="projetos.html">&larr; todos os projetos</a>
+                <a href="blog.html">&larr; todos os posts</a>
                 <a href="estudos-loja-vinhos.html">Banco de uma loja de vinhos &rarr;</a>
             </div>
         </section>
@@ -168,7 +172,7 @@
         <div class="coluna">
             <div class="linha">
                 <a class="nome-site" href="index.html">gustavo cervejera</a>
-                <span class="links"><a href="projetos.html">projetos</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+                <span class="links"><a href="projetos.html">projetos</a><a href="blog.html">blog</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
             </div>
             <div class="linha">
                 <span class="mono" id="atualizado">atualizado em 16 nov 2026</span>
@@ -178,6 +182,7 @@
     </div>
 
     <script src="script/rodape.js"></script>
+    <script src="script/revela.js"></script>
     <script src="script/estudos.js"></script>
 </body>
 

@@ -1,6 +1,7 @@
 // index.js - página única
 
 document.addEventListener('DOMContentLoaded', function () {
+    const EN = document.documentElement.lang === 'en';
 
     // cargos abrem e fecham
     const cargos = document.querySelectorAll('.xp-cargo');
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     botaoXp.addEventListener('click', function () {
         const abrir = !xpExtra.classList.contains('aberto');
         botaoXp.setAttribute('aria-expanded', abrir);
-        botaoXp.querySelector('.ver-mais-texto').textContent = abrir ? 'ver menos' : 'ver mais';
+        botaoXp.querySelector('.ver-mais-texto').textContent = abrir ? (EN ? 'see less' : 'ver menos') : (EN ? 'see more' : 'ver mais');
         if (abrir) {
             xpExtra.classList.add('aberto');
             nav.altura(xpExtra, xpExtra.scrollHeight, true);
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         cursosFael.classList.toggle('aberto', abrir);
         cursosFael.inert = !abrir;
         botaoFael.setAttribute('aria-expanded', abrir);
-        botaoFael.querySelector('.ver-mais-texto').textContent = abrir ? 'ver menos' : 'ver mais';
+        botaoFael.querySelector('.ver-mais-texto').textContent = abrir ? (EN ? 'see less' : 'ver menos') : (EN ? 'see more' : 'ver mais');
         if (abrir) {
             nav.altura(cursosFael, cursosFael.scrollHeight, true, function () {
                 nav.mostrar(botaoFael);
@@ -176,26 +177,5 @@ document.addEventListener('DOMContentLoaded', function () {
         vigia.observe(secaoXp);
     }
 
-    // entrada em cascata, como na referência: quando o grupo aparece,
-    // cada item entra 80ms depois do anterior, na ordem de leitura (linha, depois coluna)
-    const grupos = [document.querySelectorAll('.obra'), document.querySelectorAll('.lista-item')];
-    for (let g = 0; g < grupos.length; g++) {
-        const itens = Array.from(grupos[g]);
-        if (itens.length === 0) continue;
-        const vigiaGrupo = new IntersectionObserver(function (entradas) {
-            if (!entradas.some(function (e) { return e.isIntersecting; })) return;
-            vigiaGrupo.disconnect();
-            itens.sort(function (a, b) {
-                const ra = a.getBoundingClientRect();
-                const rb = b.getBoundingClientRect();
-                return Math.abs(ra.top - rb.top) < 50 ? ra.left - rb.left : ra.top - rb.top;
-            });
-            for (let i = 0; i < itens.length; i++) {
-                itens[i].style.setProperty('--atraso', (i * 80) + 'ms');
-                itens[i].classList.add('surgiu');
-            }
-        }, { rootMargin: '-50px' });
-        for (let i = 0; i < itens.length; i++) vigiaGrupo.observe(itens[i]);
-    }
-
+    // a entrada dos cards fica no revela.js
 });

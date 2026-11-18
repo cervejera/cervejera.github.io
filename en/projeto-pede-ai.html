@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pede.ai · Gustavo Cervejera</title>
+    <meta name="description" content="From a manual process to a system in production">
+    <!-- prévia ao compartilhar (linkedin, whatsapp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cervejera.github.io/en/projeto-pede-ai.html">
+    <meta property="og:title" content="Pede.ai · Gustavo Cervejera">
+    <meta property="og:description" content="From a manual process to a system in production">
+    <meta property="og:image" content="https://cervejera.github.io/img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="pt-BR" href="https://cervejera.github.io/projeto-pede-ai.html">
+    <link rel="alternate" hreflang="en" href="https://cervejera.github.io/en/projeto-pede-ai.html">
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina coluna">
+
+        <!-- topo -->
+        <header class="intro">
+            <nav class="idioma mono" aria-label="language"><a href="../projeto-pede-ai.html" hreflang="pt-BR" lang="pt-BR">PT</a><a href="projeto-pede-ai.html" hreflang="en" lang="en" class="ativo" aria-current="true">EN</a></nav>
+            <a class="mono voltar" href="projetos.html">&larr; projects</a>
+            <h1>Pede.ai</h1>
+            <p class="papel">From a manual process to a system in production</p>
+            <p class="texto">An internal Sebrae/PR platform for placing orders with vendors hired through public tender. You pick the item, enter the measurements and the order comes out ready, with the contract price calculated by the system and everything stored in a database.</p>
+            <p class="mono">work · sebrae/pr · 2026 · in production with beta testers</p>
+        </header>
+
+        <!-- resumo pra quem lê rápido -->
+        <div class="resumo">
+            <div><p class="mono">problem</p><p>Ordering from contracted vendors was manual: area and bleed calculated by hand, cost centers mixed up between regional offices, and no history.</p></div>
+            <div><p class="mono">my role</p><p>I designed and built the system, from the business rules in the API to the database, the tests and the interface.</p></div>
+            <div><p class="mono">result</p><p>In production with beta testers. 168 automated tests, orders opening in 1.3 s (previously up to 8 s), and the services flow delivered 3 weeks ahead of schedule.</p></div>
+        </div>
+
+        <div class="capa capa-grande" data-nome="pede.ai"></div>
+
+        <section>
+            <div class="faixa"><h2>The problem</h2></div>
+            <div class="post">
+                <p>In the creative team, ordering a vinyl print, a banner or a design service from a contracted vendor was tedious. You opened the contract spreadsheet, found the item, did the math by hand (area, bleed, quantity, price per m²), typed up the order and the label, and then checked that the cost center belonged to the right regional office.</p>
+                <ul class="entregas"><li><b>Math errors:</b> a per-m² order with bleed has several steps, and each one is a chance to get it wrong.</li><li><b>Cost center errors:</b> one office's cost center ended up on another office's order.</li><li><b>No history:</b> the order only existed as the file that was sent.</li></ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>What it does today</h2></div>
+            <div class="post">
+                <p><b>Print:</b> the order is built in a cart. For per-m² items, bleed is optional, with a single margin or one per side. Each item can ship to a different destination. If the cost center doesn't match the regional office, a warning appears, and you can only continue by confirming you've seen it. At the end you get a .zip with the order, the label and the entries for the management system.</p>
+                <p><b>Services:</b> the studio sends its quote as a PDF, Pede.ai reads the file and checks every line against the contract: item, code, price, subtotal and total. If anything doesn't match, the entry is blocked. I tested it with 8 real quotes in two different layouts: all 22 lines and all 8 totals were read correctly.</p>
+                <p>Both flows have individual logins, history, re-downloading files, duplicating and cancelling.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Where it is today</h2></div>
+            <div class="galeria g1">
+                <figure class="figura"><a href="../img/projetos/pedeai-st-novo.jpg" target="_blank"><img src="../img/projetos/pedeai-st-novo.jpg" alt="new order, in the Streamlit MVP" loading="lazy"></a><figcaption class="mono">new order, in the Streamlit MVP</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/pedeai-st-proposta.jpg" target="_blank"><img src="../img/projetos/pedeai-st-proposta.jpg" alt="importing a quote: every line checked against the contract" loading="lazy"></a><figcaption class="mono">importing a quote: every line checked against the contract</figcaption></figure>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Where we want to go</h2></div>
+            <p class="texto recuo">The interface for the final version, in React. It's paused on purpose until real use of the MVP shows the right flow.</p>
+            <div class="galeria g1">
+                <figure class="figura"><a href="../img/projetos/pedeai-novo-pedido.jpg" target="_blank"><img src="../img/projetos/pedeai-novo-pedido.jpg" alt="new order" loading="lazy"></a><figcaption class="mono">new order</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/pedeai-itens.jpg" target="_blank"><img src="../img/projetos/pedeai-itens.jpg" alt="items and cart" loading="lazy"></a><figcaption class="mono">items and cart</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/pedeai-meus-pedidos.jpg" target="_blank"><img src="../img/projetos/pedeai-meus-pedidos.jpg" alt="my orders" loading="lazy"></a><figcaption class="mono">my orders</figcaption></figure>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Decisions that guide the system</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">01</span>
+                    <div>
+                        <h3>Validate before polishing</h3>
+                        <p class="texto">The React version already existed, with login and a dashboard, and I still put Streamlit into production first. The day the services flow went live, the support team asked for a description and notes per item. It shipped the same day.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">02</span>
+                    <div>
+                        <h3>Rules in the backend, simple screens</h3>
+                        <p class="texto">All business rules live in the API. Streamlit only displays and submits. When the React version comes back, it plugs into the same routes and nothing is lost.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">03</span>
+                    <div>
+                        <h3>Prices never come from the user</h3>
+                        <p class="texto">The screen sends the item and the measurements. The server recalculates from the contract table and saves a snapshot of each item. If the table changes tomorrow, today's receipt is still correct.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">04</span>
+                    <div>
+                        <h3>Nothing gets deleted</h3>
+                        <p class="texto">Orders, items and events are insert-only, enforced by the database itself with triggers. Cancelling records a new event.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">05</span>
+                    <div>
+                        <h3>Business data outside the code</h3>
+                        <p class="texto">Prices, vendors and the cost center map live in data files. The price table is generated from the contracts spreadsheet as all or nothing: if one tab is broken, nothing is saved.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">06</span>
+                    <div>
+                        <h3>Layered security</h3>
+                        <p class="texto">Validation at the API boundary and again in the database. The API connects with a user that can only read and insert. Passwords stored with scrypt and sessions with signed tokens.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>The disappearing cent</h2></div>
+            <div class="post">
+                <p>I wrote a stress test that builds hundreds of random carts and checks every total against an exact calculation done another way. It found that about 0.1% of items came out 1 cent short: 540,251.415 became .41 instead of .42. The math used <code>float</code>, which can't represent decimals exactly. I moved everything to <code>Decimal</code>, with standard rounding only on each item's total.</p>
+                <p>The same test found a 1.2345 m measurement charged as such but saved as 1.235 m, and an invisible character that broke saving. The end-to-end tests, running the real Streamlit app against the real API, found two more: the cart using values from the previous screen, and duplication returning the old order number.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Measure before changing</h2></div>
+            <div class="post">
+                <p>Opening an order from the history took up to 8 seconds. I measured in production: routes without the database answered in 0.3 s, with the database in 2.7 s. The API is in the US and the database in São Paulo, and each new connection cost 1.2 s just for the security handshake. With a connection pool and session caching, it dropped to about 1.3 s. The test suite went from 274 s to 108 s.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Working with AI</h2></div>
+            <div class="post">
+                <p>A good part of the project was pair-programmed with Claude Code. What worked best was a <code>CLAUDE.md</code> file at the root of the repository, with the business rules, what must never be done, the deploy order and the backlog. AI sped up testing a lot. Business decisions stayed human: when the support team hadn't answered a question, the rule was to refuse with a warning, never to make up a value.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Timeline</h2></div>
+            <div class="post">
+
+                <ul class="entregas"><li><b>May:</b> first version of the MVP live</li><li><b>August:</b> bleed, one destination per item and a big round of fixes</li><li><b>Early October:</b> a real database, security, stress tests, login and history</li><li><b>October 13:</b> services flow with PDF reading in production, three weeks ahead of schedule</li></ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>What I learned</h2></div>
+            <div class="aprendi">
+                <div class="aprendi-col">
+                    <p class="mono">code</p>
+                    <ul>
+                        <li><span class="termo"><code>Decimal</code></span><span>money without rounding errors</span></li>
+                        <li><span class="termo">FastAPI routes</span><span>business rules in one place</span></li>
+                        <li><span class="termo">PostgreSQL triggers</span><span>insert-only tables</span></li>
+                        <li><span class="termo">Connection pooling</span><span>less time handshaking with the database</span></li>
+                        <li><span class="termo">Stress and end-to-end tests</span><span>168 tests in 9 files, with random data</span></li>
+                        <li><span class="termo">scrypt and signed tokens</span><span>passwords and sessions</span></li>
+                    </ul>
+                </div>
+                <div class="aprendi-col">
+                    <p class="mono">tools</p>
+                    <ul>
+                        <li><span class="termo">Python and FastAPI</span><span>API, on Render</span></li>
+                        <li><span class="termo">Streamlit</span><span>MVP in production</span></li>
+                        <li><span class="termo">PostgreSQL on Supabase</span><span>database</span></li>
+                        <li><span class="termo">pytest</span><span>tests</span></li>
+                        <li><span class="termo">React and Vite</span><span>final version, paused</span></li>
+                        <li><span class="termo">Claude Code</span><span>pair programmer, guided by CLAUDE.md</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- navegação entre projetos -->
+        <section>
+            <div class="faixa"><h2>More projects</h2></div>
+            <div class="vizinhos mono">
+                <a href="projetos.html">&larr; all projects</a>
+                <a href="projeto-enaex.html">Enaex &rarr;</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>home</span>
+    </a>
+
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projects</a><a href="blog.html">blog</a><a href="about.html">this site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">updated nov 16, 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script/rodape.js"></script>
+    <script src="../script/revela.js"></script>
+    <script src="../script/imagens.js"></script>
+    <script src="../script/projeto.js"></script>
+</body>
+
+</html>

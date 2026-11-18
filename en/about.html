@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This site · Gustavo Cervejera</title>
+    <meta name="description" content="Graded Assignment 1 · Web Programming Fundamentals · PUCPR">
+    <!-- prévia ao compartilhar (linkedin, whatsapp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cervejera.github.io/en/about.html">
+    <meta property="og:title" content="This site · Gustavo Cervejera">
+    <meta property="og:description" content="Graded Assignment 1 · Web Programming Fundamentals · PUCPR">
+    <meta property="og:image" content="https://cervejera.github.io/img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="pt-BR" href="https://cervejera.github.io/about.html">
+    <link rel="alternate" hreflang="en" href="https://cervejera.github.io/en/about.html">
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="bloco topo">
+        <div class="coluna">
+            <nav class="idioma mono" aria-label="language"><a href="../about.html" hreflang="pt-BR" lang="pt-BR">PT</a><a href="about.html" hreflang="en" lang="en" class="ativo" aria-current="true">EN</a></nav>
+            <a class="mono voltar" href="index.html">&larr; home</a>
+            <h1>This site</h1>
+            <p class="papel">Graded Assignment 1 · Web Programming Fundamentals · PUCPR</p>
+            <p class="texto">Made by <b>Gustavo Cervejera</b>, a Systems Analysis and Development student. Built with plain <b>HTML</b>, <b>CSS</b> and <b>JavaScript</b>, no frameworks, and it runs straight from a folder on your computer.</p>
+        </div>
+    </div>
+    <div class="faixa">
+        <div class="coluna">
+            <h2>Files</h2>
+        </div>
+    </div>
+    <div class="bloco">
+        <div class="coluna">
+            <p class="texto">
+                index.html · home page: résumé and projects on a single page<br>
+                form.html · contact form (portuguese only)<br>
+                formAction.html · receives the data sent via GET<br>
+                projeto-*.html · one page per project<br>
+                projetos.html · all projects, with a filter by type<br>
+                estudos-*.html · one college assignment per page<br>
+                about.html · this page<br>
+                css/ · style.css<br>
+                script/ · index.js, projetos.js, projeto.js, estudos.js, form.js, action.js, about.js, rodape.js<br>
+                img/ · favicon.svg (tab icon), projetos/ (covers and screens) and estudos/ (assignment screenshots)
+            </p>
+        </div>
+    </div>
+    <div class="faixa">
+        <div class="coluna">
+            <h2>How it was made</h2>
+        </div>
+    </div>
+    <div class="bloco">
+        <div class="coluna">
+            <button class="botao-texto" type="button" id="botaoDetalhes">show details</button>
+
+            <!-- escondido no css, o about.js abre -->
+            <div id="detalhes">
+                <h3>HTML</h3>
+                <ul>
+                    <li>The same menu and footer on every page</li>
+                    <li>A form with required, pattern and several input types</li>
+                    <li>Tables, lists and relative paths for every file</li>
+                </ul>
+                <h3>CSS</h3>
+                <ul>
+                    <li>A single external file, with reusable classes (coluna, bloco, faixa, campo...)</li>
+                    <li>Pseudo-classes :hover, :focus, :nth-child and a layout for phone screens</li>
+                </ul>
+                <h3>JavaScript</h3>
+                <ul>
+                    <li>index.js: roles and certifications that open and close, a timeline that follows the scroll, and project entrance animations</li>
+                    <li>projetos.js: filter on the projects page</li>
+                    <li>projeto.js: activity chart for each project</li>
+                    <li>form.js: regex validation, phone mask and error messages</li>
+                    <li>action.js: reads the data that arrived in the URL via GET</li>
+                    <li>rodape.js: works out how many days ago the site was updated</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>home</span>
+    </a>
+
+    <!-- rodapé -->
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projects</a><a href="blog.html">blog</a><a href="about.html">this site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">updated nov 16, 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script/rodape.js"></script>
+    <script src="../script/revela.js"></script>
+    <script src="../script/about.js"></script>
+</body>
+
+</html>

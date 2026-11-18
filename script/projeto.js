@@ -85,19 +85,5 @@ document.addEventListener('DOMContentLoaded', function () {
         vigiaGrafico.observe(caixaGrafico);
     }
 
-    // entrada em cascata: cada grupo entra junto, 80ms entre os itens
-    const grupos = document.querySelectorAll('.lista, .aprendizados');
-    for (let g = 0; g < grupos.length; g++) {
-        const itens = grupos[g].querySelectorAll('.surge');
-        if (itens.length === 0) continue;
-        const vigia = new IntersectionObserver(function (entradas) {
-            if (!entradas.some(function (e) { return e.isIntersecting; })) return;
-            vigia.disconnect();
-            for (let i = 0; i < itens.length; i++) {
-                itens[i].style.setProperty('--atraso', (i * 80) + 'ms');
-                itens[i].classList.add('surgiu');
-            }
-        }, { rootMargin: '-50px' });
-        for (let i = 0; i < itens.length; i++) vigia.observe(itens[i]);
-    }
+    // a entrada dos blocos fica no revela.js
 });

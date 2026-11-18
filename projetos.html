@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projetos · Gustavo Cervejera</title>
-    <meta name="description" content="Trabalho, design, projetos externos e faculdade">
-    <!-- prévia ao compartilhar (linkedin, whatsapp). ao hospedar, troque og:image por um endereço completo -->
+    <meta name="description" content="Trabalho, design e projetos externos">
+    <!-- prévia ao compartilhar (linkedin, whatsapp) -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cervejera.github.io/projetos.html">
     <meta property="og:title" content="Projetos · Gustavo Cervejera">
-    <meta property="og:description" content="Trabalho, design, projetos externos e faculdade">
-    <meta property="og:image" content="img/og-capa.png">
+    <meta property="og:description" content="Trabalho, design e projetos externos">
+    <meta property="og:image" content="https://cervejera.github.io/img/og-capa.png">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="pt-BR" href="https://cervejera.github.io/projetos.html">
+    <link rel="alternate" hreflang="en" href="https://cervejera.github.io/en/projetos.html">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,17 +28,17 @@
 
         <!-- topo -->
         <header class="intro">
+            <nav class="idioma mono" aria-label="idioma"><a href="projetos.html" hreflang="pt-BR" lang="pt-BR" class="ativo" aria-current="true">PT</a><a href="en/projetos.html" hreflang="en" lang="en">EN</a></nav>
             <a class="mono voltar" href="index.html">&larr; início</a>
             <h1>Projetos</h1>
-            <p class="papel">Trabalho, design, projetos externos e faculdade</p>
-            <p class="texto">Cada um abre uma página com o problema, como foi construído e o que ficou. Os de estudo são
-                trabalhos da graduação em Análise e Desenvolvimento de Sistemas na PUCPR, com a devolutiva do professor.</p>
+            <p class="papel">Trabalho, design e projetos externos</p>
+            <p class="texto">Cada um abre uma página com o problema, como foi construído e o que ficou. Os trabalhos da faculdade ficam no <a href="blog.html">blog</a>.</p>
         </header>
 
         <section>
             <div class="faixa"><h2>Todos</h2></div>
             <!-- filtro por ferramenta (filtro.js) -->
-            <div class="filtros mono" data-alvo="obras"><button type="button" class="filtro ativo" data-filtro="todos">todos</button><button type="button" class="filtro" data-filtro="design">design</button><button type="button" class="filtro" data-filtro="dados">dados</button><button type="button" class="filtro" data-filtro="python">python</button><button type="button" class="filtro" data-filtro="sql">sql</button><button type="button" class="filtro" data-filtro="excel">excel</button><button type="button" class="filtro" data-filtro="iot">iot</button><button type="button" class="filtro" data-filtro="ux">ux</button></div>
+            <div class="filtros mono" data-alvo="obras"><button type="button" class="filtro ativo" data-filtro="todos">todos</button><button type="button" class="filtro" data-filtro="design">design</button><button type="button" class="filtro" data-filtro="dados">dados</button><button type="button" class="filtro" data-filtro="python">python</button><button type="button" class="filtro" data-filtro="sql">sql</button><button type="button" class="filtro" data-filtro="excel">excel</button></div>
             <!-- capa 16:9 (1920x1080). sem imagem, o card mostra o nome no fundo pontilhado -->
             <div class="obras" id="obras">
                 <a class="obra surge" data-tags="python sql dados" href="projeto-pede-ai.html" data-tipo="trabalho">
@@ -70,30 +73,6 @@
                         <p class="resultado">identidade completa do evento</p>
                     </div>
                 </a>
-                <a class="obra surge" data-tags="ux" href="estudos-dark-patterns.html" data-tipo="estudo">
-                    <div class="capa" data-nome="dark patterns"></div>
-                    <div class="obra-corpo">
-                        <h3>Dark patterns e o design engineer</h3>
-                        <p class="mono"><span class="tipo">estudo</span>ética · pucpr 2026</p>
-                        <p class="resultado">devolutiva elogiou clareza e escrita</p>
-                    </div>
-                </a>
-                <a class="obra surge" data-tags="sql dados" href="estudos-loja-vinhos.html" data-tipo="estudo">
-                    <div class="capa" data-nome="loja de vinhos"></div>
-                    <div class="obra-corpo">
-                        <h3>Banco de uma loja de vinhos</h3>
-                        <p class="mono"><span class="tipo">estudo</span>mysql · sql · pucpr 2026</p>
-                        <p class="resultado">3 tabelas, 2 joins, acesso por coluna</p>
-                    </div>
-                </a>
-                <a class="obra surge" data-tags="python iot" href="estudos-monitor-clima.html" data-tipo="estudo">
-                    <div class="capa" data-nome="monitor de clima"></div>
-                    <div class="obra-corpo">
-                        <h3>Monitor de clima com ESP32: do simulador à montagem</h3>
-                        <p class="mono"><span class="tipo">estudo</span>esp32 · iot · pucpr 2026</p>
-                        <p class="resultado">relé automático e nuvem a cada 20 s</p>
-                    </div>
-                </a>
                 <a class="obra surge" data-tags="design" href="https://www.behance.net/gallery/234045305/SebraePR" data-tipo="design">
                     <div class="capa" data-nome="sebrae/pr"></div>
                     <div class="obra-corpo">
@@ -116,7 +95,7 @@
         <div class="coluna">
             <div class="linha">
                 <a class="nome-site" href="index.html">gustavo cervejera</a>
-                <span class="links"><a href="projetos.html">projetos</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+                <span class="links"><a href="projetos.html">projetos</a><a href="blog.html">blog</a><a href="about.html">este site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
             </div>
             <div class="linha">
                 <span class="mono" id="atualizado">atualizado em 16 nov 2026</span>
@@ -126,6 +105,7 @@
     </div>
 
     <script src="script/rodape.js"></script>
+    <script src="script/revela.js"></script>
     <script src="script/navegacao.js"></script>
     <script src="script/filtro.js"></script>
     <script src="script/projetos.js"></script>

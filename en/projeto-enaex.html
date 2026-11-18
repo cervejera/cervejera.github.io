@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enaex · Gustavo Cervejera</title>
+    <meta name="description" content="Interactive corporate presentation, with dashboards linked to Excel">
+    <!-- prévia ao compartilhar (linkedin, whatsapp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cervejera.github.io/en/projeto-enaex.html">
+    <meta property="og:title" content="Enaex · Gustavo Cervejera">
+    <meta property="og:description" content="Interactive corporate presentation, with dashboards linked to Excel">
+    <meta property="og:image" content="https://cervejera.github.io/img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="pt-BR" href="https://cervejera.github.io/projeto-enaex.html">
+    <link rel="alternate" hreflang="en" href="https://cervejera.github.io/en/projeto-enaex.html">
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina coluna">
+
+        <!-- topo -->
+        <header class="intro">
+            <nav class="idioma mono" aria-label="language"><a href="../projeto-enaex.html" hreflang="pt-BR" lang="pt-BR">PT</a><a href="projeto-enaex.html" hreflang="en" lang="en" class="ativo" aria-current="true">EN</a></nav>
+            <a class="mono voltar" href="projetos.html">&larr; projects</a>
+            <h1>Enaex</h1>
+            <p class="papel">Interactive corporate presentation, with dashboards linked to Excel</p>
+            <p class="texto">Client project for Enaex, a company in the explosives and mining sector. A click-through presentation on strategy and financial results, with 28 charts fed by a single spreadsheet.</p>
+            <p class="mono">client project · enaex · 2026 · powerpoint and excel</p>
+            <p class="aviso mono">the numbers in the charts were replaced with fictional values. the design and structure are the originals.</p>
+        </header>
+
+        <!-- resumo pra quem lê rápido -->
+        <div class="resumo">
+            <div><p class="mono">problem</p><p>A results presentation that had to be navigated live and updated every year without rebuilding the charts.</p></div>
+            <div><p class="mono">my role</p><p>Client project: I structured the spreadsheet, built the 28 charts and designed the whole presentation.</p></div>
+            <div><p class="mono">result</p><p>One data source feeds every chart. A new year is one more row, without touching PowerPoint.</p></div>
+        </div>
+
+        <div class="capa capa-grande" data-nome="enaex"></div>
+
+        <section>
+            <div class="faixa"><h2>The problem</h2></div>
+            <div class="post">
+                <p>The presentation had to work live, with the presenter jumping to any topic on the spot, and the charts had to be easy to update every year without rebuilding anything.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>How it was built</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">01</span>
+                    <div>
+                        <h3>A single data source</h3>
+                        <p class="texto">Every yearly series lives in a DATA tab. Each slide's tab reads from it with formulas, and nobody types numbers anywhere else.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">02</span>
+                    <div>
+                        <h3>A new year without rebuilding charts</h3>
+                        <p class="texto">Adding a new year takes one more row in DATA, marked as LTM. The red bar for the latest period moves on its own.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">03</span>
+                    <div>
+                        <h3>Built-in checks</h3>
+                        <p class="texto">Check columns recalculate the margins. Plus a color code: blue is a typed value, black is a formula, green is a reference to another tab, and yellow is a discrepancy found in the deck, pending confirmation with the client.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">04</span>
+                    <div>
+                        <h3>Charts linked to PowerPoint</h3>
+                        <p class="texto">Each chart is sized in Excel at its final slide size and pasted as a link. Automatic updating is turned off so the link warning never pops up in front of the audience.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">05</span>
+                    <div>
+                        <h3>Click-through navigation</h3>
+                        <p class="texto">A clickable table of contents and back, next and home buttons on every slide, for presenting in kiosk mode.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Dashboards</h2></div>
+            <div class="galeria g2">
+                <figure class="figura"><a href="../img/projetos/enaex-financial-record.jpg" target="_blank"><img src="../img/projetos/enaex-financial-record.jpg" alt="financial history: sales, EBITDA and net profit" loading="lazy"></a><figcaption class="mono">financial history: sales, EBITDA and net profit</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/enaex-vendas.jpg" target="_blank"><img src="../img/projetos/enaex-vendas.jpg" alt="sales and diversification by country" loading="lazy"></a><figcaption class="mono">sales and diversification by country</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/enaex-ebitda.jpg" target="_blank"><img src="../img/projetos/enaex-ebitda.jpg" alt="EBITDA and diversification" loading="lazy"></a><figcaption class="mono">EBITDA and diversification</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/enaex-colaboradores.jpg" target="_blank"><img src="../img/projetos/enaex-colaboradores.jpg" alt="employees worldwide" loading="lazy"></a><figcaption class="mono">employees worldwide</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/enaex-fluxo-caixa.jpg" target="_blank"><img src="../img/projetos/enaex-fluxo-caixa.jpg" alt="cash flow stability" loading="lazy"></a><figcaption class="mono">cash flow stability</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/enaex-evolucao-vendas.jpg" target="_blank"><img src="../img/projetos/enaex-evolucao-vendas.jpg" alt="sales volume over time" loading="lazy"></a><figcaption class="mono">sales volume over time</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/enaex-divida.jpg" target="_blank"><img src="../img/projetos/enaex-divida.jpg" alt="debt structure" loading="lazy"></a><figcaption class="mono">debt structure</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/enaex-indicadores.jpg" target="_blank"><img src="../img/projetos/enaex-indicadores.jpg" alt="financial ratios" loading="lazy"></a><figcaption class="mono">financial ratios</figcaption></figure>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Customer Support vs ENAEX Subsidiaries</h2></div>
+            <p class="texto recuo">Another presentation from the same project: the scope and roles of customer support between Enaex and its subsidiaries.</p>
+            <div class="galeria g2">
+                <figure class="figura"><a href="../img/projetos/enaex-cs-capa.jpg" target="_blank"><img src="../img/projetos/enaex-cs-capa.jpg" alt="cover" loading="lazy"></a><figcaption class="mono">cover</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/enaex-cs-definicoes.jpg" target="_blank"><img src="../img/projetos/enaex-cs-definicoes.jpg" alt="definitions" loading="lazy"></a><figcaption class="mono">definitions</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/enaex-cs-fluxo.jpg" target="_blank"><img src="../img/projetos/enaex-cs-fluxo.jpg" alt="support flow" loading="lazy"></a><figcaption class="mono">support flow</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/enaex-cs-parceria.jpg" target="_blank"><img src="../img/projetos/enaex-cs-parceria.jpg" alt="partnership between teams" loading="lazy"></a><figcaption class="mono">partnership between teams</figcaption></figure>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>What I learned</h2></div>
+            <div class="aprendi">
+                <div class="aprendi-col">
+                    <p class="mono">excel and powerpoint</p>
+                    <ul>
+                        <li><span class="termo">Single source of truth</span><span>one data tab, everything else by formula</span></li>
+                        <li><span class="termo"><code>IF</code> and cross-tab references</span><span>the latest period's bar highlighted automatically</span></li>
+                        <li><span class="termo">Check columns</span><span>margins recalculated to catch errors</span></li>
+                        <li><span class="termo">Linked charts</span><span>Excel pasted into PowerPoint while keeping the link</span></li>
+                        <li><span class="termo">Internal hyperlinks</span><span>navigation between slides</span></li>
+                    </ul>
+                </div>
+                <div class="aprendi-col">
+                    <p class="mono">tools</p>
+                    <ul>
+                        <li><span class="termo">Excel</span><span>data source and charts</span></li>
+                        <li><span class="termo">PowerPoint</span><span>interactive presentation</span></li>
+                        <li><span class="termo">Illustrator</span><span>icons and elements</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- navegação entre projetos -->
+        <section>
+            <div class="faixa"><h2>More projects</h2></div>
+            <div class="vizinhos mono">
+                <a href="projetos.html">&larr; all projects</a>
+                <a href="projeto-infograficos.html">Infographics &rarr;</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>home</span>
+    </a>
+
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projects</a><a href="blog.html">blog</a><a href="about.html">this site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">updated nov 16, 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script/rodape.js"></script>
+    <script src="../script/revela.js"></script>
+    <script src="../script/imagens.js"></script>
+    <script src="../script/projeto.js"></script>
+</body>
+
+</html>

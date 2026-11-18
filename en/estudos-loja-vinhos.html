@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A wine store database · Gustavo Cervejera</title>
+    <meta name="description" content="A small database for a wine store, from the model to a user who only sees what they need.">
+    <!-- prévia ao compartilhar (linkedin, whatsapp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cervejera.github.io/en/estudos-loja-vinhos.html">
+    <meta property="og:title" content="A wine store database · Gustavo Cervejera">
+    <meta property="og:description" content="A small database for a wine store, from the model to a user who only sees what they need.">
+    <meta property="og:image" content="https://cervejera.github.io/img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="pt-BR" href="https://cervejera.github.io/estudos-loja-vinhos.html">
+    <link rel="alternate" hreflang="en" href="https://cervejera.github.io/en/estudos-loja-vinhos.html">
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina coluna">
+
+        <!-- topo do post -->
+        <header class="intro">
+            <nav class="idioma mono" aria-label="language"><a href="../estudos-loja-vinhos.html" hreflang="pt-BR" lang="pt-BR">PT</a><a href="estudos-loja-vinhos.html" hreflang="en" lang="en" class="ativo" aria-current="true">EN</a></nav>
+            <a class="mono voltar" href="blog.html">&larr; blog</a>
+            <p class="mono">databases · graded assignment 2 · pucpr 2026 · 3 min read</p>
+            <h1 class="titulo-post">A wine store database</h1>
+            <p class="papel">A small database for a wine store, from the model to a user who only sees what they need.</p>
+        </header>
+
+        <!-- resumo pra quem lê rápido -->
+        <div class="resumo">
+            <div><p class="mono">problem</p><p>Build a wine store database, from the model to access control.</p></div>
+            <div><p class="mono">my role</p><p>I modeled the tables, populated them, wrote the queries and created a user with column-level permissions.</p></div>
+            <div><p class="mono">result</p><p>3 tables linked by foreign keys, a query with 2 JOINs and a user limited to 40 queries per hour.</p></div>
+        </div>
+
+        <!-- capa: troque por <img src="../img/..." alt="..."> (1920x1080) -->
+        <div class="capa capa-grande" data-nome="wine store"></div>
+
+        <article class="post">
+            <h2>The topic</h2>
+            <p>Graded Assignment 2 in Databases asked for a complete database for a wine store: create the tables, populate them, query them and control who can access what. The logic is simple: each wine comes from a winery, and each winery is in a region.</p>
+        </article>
+
+        <!-- processo -->
+        <section>
+            <div class="faixa"><h2>How the assignment was built</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">01</span>
+                    <div>
+                        <h3>Model in three levels</h3>
+                        <p class="texto">Region, Winery and Wine, each with an auto-increment primary key. The winery points to the region and the wine points to the winery, through foreign keys.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">02</span>
+                    <div>
+                        <h3>Insert in the right order</h3>
+                        <p class="texto">With foreign keys, order matters: first the 5 regions (Vale dos Vinhedos, Napa, Bordeaux, Mendoza and Douro), then the wineries, then the 6 wines. Reverse it and the database refuses.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">03</span>
+                    <div>
+                        <h3>Bring it all together in one query</h3>
+                        <p class="texto">Two JOINs return the wine's name, year, winery and region in a single row.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">04</span>
+                    <div>
+                        <h3>Grant only the access needed</h3>
+                        <p class="texto">The sommelier user can read the whole wine table, but only sees the code and name from the winery table. And it's limited to 40 queries per hour.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <article class="post">
+            <figure class="codigo">
+                <figcaption class="mono">query with two joins</figcaption>
+                <pre><code>SELECT v.nomeVinho, v.anoVinho, vc.nomeVinicola, r.nomeRegiao
+FROM Vinho v
+JOIN Vinicola vc ON v.codVinicola = vc.codVinicola
+JOIN Regiao r ON vc.codRegiao = r.codRegiao;</code></pre>
+            </figure>
+            <figure class="codigo">
+                <figcaption class="mono">user with limited access</figcaption>
+                <pre><code>CREATE USER 'sommelier'@'localhost' IDENTIFIED BY '********'
+    WITH MAX_QUERIES_PER_HOUR 40;
+
+GRANT SELECT ON loja_vinhos.Vinho TO 'sommelier'@'localhost';
+GRANT SELECT (codVinicola, nomeVinicola)
+    ON loja_vinhos.Vinicola TO 'sommelier'@'localhost';</code></pre>
+            </figure>
+        </article>
+
+        <!-- devolutiva -->
+        <section>
+            <div class="faixa"><h2>Professor's feedback</h2></div>
+            <div class="devolutiva">
+                <blockquote>Logical model: the Regiao, Vinicola and Vinho tables were implemented with the correct structure, using auto-increment primary keys and foreign keys that establish the relationships between entities.</blockquote>
+                <blockquote>Data insertion: the insert statements follow the logical order of dependencies, populating the regions table first, then the wineries and finally the wines, which ensures the database's referential integrity.</blockquote>
+                <blockquote>Query: the query uses JOINs precisely to retrieve the wine's name, year, winery and region, correctly bringing together the model's three tables.</blockquote>
+                <blockquote>Access control: the sommelier user was created with the queries-per-hour restriction and given specific SELECT permissions on the wine table and on selected columns of the winery table.</blockquote>
+                <p class="mono assinatura">course professor (translated from portuguese)</p>
+            </div>
+        </section>
+
+        <!-- o que aprendi -->
+        <section>
+            <div class="faixa"><h2>What I learned</h2></div>
+            <div class="aprendi">
+                <div class="aprendi-col">
+                    <p class="mono">code</p>
+                    <ul>
+                        <li><span class="termo"><code>PRIMARY KEY AUTO_INCREMENT</code></span><span>each table's key, generated by the database itself</span></li>
+                        <li><span class="termo"><code>FOREIGN KEY</code></span><span>links the winery to the region and the wine to the winery</span></li>
+                        <li><span class="termo"><code>INSERT INTO … VALUES</code></span><span>several rows in one statement, in dependency order</span></li>
+                        <li><span class="termo"><code>JOIN</code></span><span>joins the three tables in one query</span></li>
+                        <li><span class="termo"><code>CREATE USER … MAX_QUERIES_PER_HOUR</code></span><span>a user with a usage limit</span></li>
+                        <li><span class="termo"><code>GRANT SELECT (colunas)</code></span><span>table- and column-level permissions</span></li>
+                    </ul>
+                </div>
+                <div class="aprendi-col">
+                    <p class="mono">tools</p>
+                    <ul>
+                        <li><span class="termo">BrModelo</span><span>conceptual model, the entity diagram</span></li>
+                        <li><span class="termo">MySQL Workbench</span><span>logical model and running the scripts</span></li>
+                        <li><span class="termo">MySQL</span><span>the database itself</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>More posts</h2></div>
+            <div class="vizinhos mono">
+                <a href="blog.html">&larr; all posts</a>
+                <a href="estudos-monitor-clima.html">ESP32 weather monitor &rarr;</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>home</span>
+    </a>
+
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projects</a><a href="blog.html">blog</a><a href="about.html">this site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">updated nov 16, 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script/rodape.js"></script>
+    <script src="../script/revela.js"></script>
+    <script src="../script/estudos.js"></script>
+</body>
+
+</html>

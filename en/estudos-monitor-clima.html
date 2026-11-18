@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 weather monitor · Gustavo Cervejera</title>
+    <meta name="description" content="It started as a sensor reading in a simulator and ended with the kit assembled: an ESP32 that reads temperature and humidity, switches on a relay when a limit is exceeded and sends everything to the cloud every 20 seconds.">
+    <!-- prévia ao compartilhar (linkedin, whatsapp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cervejera.github.io/en/estudos-monitor-clima.html">
+    <meta property="og:title" content="ESP32 weather monitor · Gustavo Cervejera">
+    <meta property="og:description" content="It started as a sensor reading in a simulator and ended with the kit assembled: an ESP32 that reads temperature and humidity, switches on a relay when a limit is exceeded and sends everything to the cloud every 20 seconds.">
+    <meta property="og:image" content="https://cervejera.github.io/img/og-capa.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="pt-BR" href="https://cervejera.github.io/estudos-monitor-clima.html">
+    <link rel="alternate" hreflang="en" href="https://cervejera.github.io/en/estudos-monitor-clima.html">
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&family=Reddit+Sans:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="pagina coluna">
+
+        <!-- topo do post -->
+        <header class="intro">
+            <nav class="idioma mono" aria-label="language"><a href="../estudos-monitor-clima.html" hreflang="pt-BR" lang="pt-BR">PT</a><a href="estudos-monitor-clima.html" hreflang="en" lang="en" class="ativo" aria-current="true">EN</a></nav>
+            <a class="mono voltar" href="blog.html">&larr; blog</a>
+            <p class="mono">iot fundamentals · graded assignments 1 and 2 · pucpr 2026 · 4 min read</p>
+            <h1 class="titulo-post">ESP32 weather monitor: from simulator to hardware</h1>
+            <p class="papel">It started as a sensor reading in a simulator and ended with the kit assembled: an ESP32 that reads temperature and humidity, switches on a relay when a limit is exceeded and sends everything to the cloud every 20 seconds.</p>
+        </header>
+
+        <!-- resumo pra quem lê rápido -->
+        <div class="resumo">
+            <div><p class="mono">problem</p><p>Read temperature and humidity, act when a limit is exceeded and store the data in the cloud.</p></div>
+            <div><p class="mono">my role</p><p>I programmed it in MicroPython, tested it in the simulator and built the circuit with the kit.</p></div>
+            <div><p class="mono">result</p><p>The ESP32 switches the relay on its own and sends readings to ThingSpeak every 20 seconds.</p></div>
+        </div>
+
+        <!-- capa: troque por <img src="../img/..." alt="..."> (1920x1080) -->
+        <div class="capa capa-grande" data-nome="weather monitor"></div>
+
+        <article class="post">
+            <h2>The topic</h2>
+            <p>The two graded assignments in IoT Fundamentals are the same project in two phases. In the first, the ESP32 only read the sensor, all in Wokwi, an in-browser board simulator. In the second, I built the real kit, with an ESP32, a DHT11 sensor and a relay, programmed in MicroPython, and connected everything to the network and the cloud.</p>
+        </article>
+
+        <!-- parte 1 -->
+        <section>
+            <div class="faixa"><h2>Part 1 · reading in the simulator</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">01</span>
+                    <div>
+                        <h3>Set up the environment</h3>
+                        <p class="texto">Wokwi doesn't have the DHT11, which is the sensor in the class kit, only the DHT22. Both use a similar protocol, so I just swapped the class in the code and kept the same logic.</p>
+                        <figure class="figura"><img src="../img/estudos/leitura-dht-etapa1.jpg" alt="step 1: ESP32 and DHT22 in Wokwi" loading="lazy"><figcaption class="mono">step 1: ESP32 and DHT22 in Wokwi</figcaption></figure>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">02</span>
+                    <div>
+                        <h3>Configure the ESP32</h3>
+                        <p class="texto">The board booted MicroPython fine, but the reading timed out. The problem wasn't the board, it was the communication with the sensor.</p>
+                        <figure class="figura"><img src="../img/estudos/leitura-dht-etapa2.jpg" alt="step 2: firmware running and the timeout in the console" loading="lazy"><figcaption class="mono">step 2: firmware running and the timeout in the console</figcaption></figure>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">03</span>
+                    <div>
+                        <h3>Read the sensor</h3>
+                        <p class="texto">I fixed the wiring, with power on 3V3, data on pin 4 and ground on GND. The reading showed up in the console every 5 seconds.</p>
+                        <figure class="figura"><img src="../img/estudos/leitura-dht-etapa3.jpg" alt="step 3: readings arriving in the console" loading="lazy"><figcaption class="mono">step 3: readings arriving in the console</figcaption></figure>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <article class="post">
+            <figure class="codigo">
+                <figcaption class="mono">main.py</figcaption>
+                <pre><code>import dht
+import machine
+import time
+
+d = dht.DHT22(machine.Pin(4))
+
+while True:
+    d.measure()
+    print("Temp={}   Umid={}".format(d.temperature(), d.humidity()))
+    time.sleep(5)</code></pre>
+            </figure>
+            <p><a href="https://wokwi.com/projects/475080745447471105" target="_blank">open the simulation in Wokwi <span class="flecha">&#x2197;&#xFE0E;</span></a></p>
+        </article>
+
+        <!-- parte 2 -->
+        <section>
+            <div class="faixa"><h2>Part 2 · building with the kit</h2></div>
+            <ol class="aprendizados">
+                <li class="aprendizado surge">
+                    <span class="mono numero">04</span>
+                    <div>
+                        <h3>Connect to Wi-Fi</h3>
+                        <p class="texto">The connection lives in a separate file, wifi_lib.py: it enables the interface, tries to connect and waits until it works. The main program just calls conecta().</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">05</span>
+                    <div>
+                        <h3>Read the sensor</h3>
+                        <p class="texto">The DHT11 is on pin 4. Each cycle takes one temperature reading and one humidity reading.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">06</span>
+                    <div>
+                        <h3>Decide and act</h3>
+                        <p class="texto">Above 31 °C or 70% humidity, the relay on pin 2 turns on. Below that, it turns off. It's the same logic as irrigation that turns on when the soil dries out.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">07</span>
+                    <div>
+                        <h3>Send to the cloud</h3>
+                        <p class="texto">Each reading goes to ThingSpeak in an HTTP request, in fields 1 and 2 of the channel, where it becomes a chart.</p>
+                    </div>
+                </li>
+                <li class="aprendizado surge">
+                    <span class="mono numero">08</span>
+                    <div>
+                        <h3>Don't freeze on errors</h3>
+                        <p class="texto">The whole cycle is wrapped in a try/except. If the reading or the network fails, the program reports it and tries again 20 seconds later.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <article class="post">
+            <figure class="codigo">
+                <figcaption class="mono">main.py (shortened)</figcaption>
+                <pre><code>while True:
+    try:
+        sensor.measure()
+        temp = sensor.temperature()
+        umid = sensor.humidity()
+
+        if temp &gt; LIMITE_TEMP or umid &gt; LIMITE_UMID:
+            rele.value(1)
+        else:
+            rele.value(0)
+
+        url = "https://api.thingspeak.com/update?api_key={}&amp;field1={}&amp;field2={}".format(API_KEY, temp, umid)
+        urequests.get(url).close()
+
+    except Exception as e:
+        print("Erro:", e)
+
+    time.sleep(20)</code></pre>
+            </figure>
+            <p><a href="https://youtu.be/1IFe7uRuKKs" target="_blank">watch the build video <span class="flecha">&#x2197;&#xFE0E;</span></a></p>
+        </article>
+
+        <!-- o que aprendi -->
+        <section>
+            <div class="faixa"><h2>What I learned</h2></div>
+            <div class="aprendi">
+                <div class="aprendi-col">
+                    <p class="mono">code</p>
+                    <ul>
+                        <li><span class="termo">MicroPython</span><span>Python running directly on the board</span></li>
+                        <li><span class="termo"><code>machine.Pin</code></span><span>the ESP32's input and output pins, for the sensor and the relay</span></li>
+                        <li><span class="termo"><code>dht.DHT11</code> / <code>DHT22</code></span><span>temperature and humidity readings</span></li>
+                        <li><span class="termo"><code>network.WLAN</code></span><span>Wi-Fi connection</span></li>
+                        <li><span class="termo"><code>urequests</code></span><span>an HTTP request to send the reading to the cloud</span></li>
+                        <li><span class="termo"><code>import</code> from your own file</span><span>the connection split out into wifi_lib.py</span></li>
+                        <li><span class="termo"><code>try</code> / <code>except</code> and <code>time.sleep</code></span><span>a loop that keeps running even after errors</span></li>
+                    </ul>
+                </div>
+                <div class="aprendi-col">
+                    <p class="mono">tools</p>
+                    <ul>
+                        <li><span class="termo">Wokwi</span><span>in-browser ESP32 simulator</span></li>
+                        <li><span class="termo">Thonny</span><span>editor for flashing code to the board</span></li>
+                        <li><span class="termo">ESP32, DHT11 and relay</span><span>the physical kit for the build</span></li>
+                        <li><span class="termo">ThingSpeak</span><span>stores the readings and shows them as a chart</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>More posts</h2></div>
+            <div class="vizinhos mono">
+                <a href="blog.html">&larr; all posts</a>
+                <a href="estudos-dark-patterns.html">Dark patterns and the design engineer &rarr;</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- botão fixo de volta pro início -->
+    <a class="flutuante" href="index.html" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg>
+        <span>home</span>
+    </a>
+
+    <div class="rodape">
+        <div class="coluna">
+            <div class="linha">
+                <a class="nome-site" href="index.html">gustavo cervejera</a>
+                <span class="links"><a href="projetos.html">projects</a><a href="blog.html">blog</a><a href="about.html">this site</a><a href="https://www.linkedin.com/in/gustavo-cervejera" target="_blank">linkedin <span class="flecha">&#x2197;&#xFE0E;</span></a><a href="https://www.behance.net/cervejera" target="_blank">behance <span class="flecha">&#x2197;&#xFE0E;</span></a></span>
+            </div>
+            <div class="linha">
+                <span class="mono" id="atualizado">updated nov 16, 2026</span>
+                <span class="mono">© 2026 Gustavo Cervejera</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script/rodape.js"></script>
+    <script src="../script/revela.js"></script>
+    <script src="../script/imagens.js"></script>
+    <script src="../script/estudos.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 // filtro.js - filtra os cards de projeto pela ferramenta (data-tags)
 
 document.addEventListener('DOMContentLoaded', function () {
+    const EN = document.documentElement.lang === 'en';
     const barras = document.querySelectorAll('.filtros[data-alvo]');
     for (let b = 0; b < barras.length; b++) {
         const grade = document.getElementById(barras[b].getAttribute('data-alvo'));
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
             botaoMais.addEventListener('click', function () {
                 const abrir = botaoMais.getAttribute('aria-expanded') !== 'true';
                 botaoMais.setAttribute('aria-expanded', abrir);
-                botaoMais.querySelector('.ver-mais-texto').textContent = abrir ? 'ver menos' : 'ver mais';
+                botaoMais.querySelector('.ver-mais-texto').textContent = abrir ? (EN ? 'see less' : 'ver menos') : (EN ? 'see more' : 'ver mais');
                 const visiveis = Array.from(obras).filter(function (o) { return !o.hidden; });
                 if (abrir) {
                     grade.classList.remove('recolhida');
