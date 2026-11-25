@@ -3357,3 +3357,37 @@ html[data-tema="claro"] .idioma .tema .sol {
 .leitura .post + .galeria {
     margin-top: -28px;
 }
+
+/* links do projeto: linha própria, em botões quadrados verdes */
+.links-projeto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 24px;
+}
+
+.links-projeto a {
+    padding: 7px 12px;
+    border: 1px solid rgba(var(--verde-rgb), .4);
+    background-color: rgba(var(--verde-rgb), .1);
+    background-image: none;
+    color: var(--c5fdba6);
+    font-size: 13px;
+    transition: border-color .15s, background-color .15s;
+}
+
+.links-projeto a:hover {
+    border-color: var(--c3ecf8e);
+    background-color: rgba(var(--verde-rgb), .18);
+    text-decoration: none;
+}
+
+/* capa das páginas de projeto: faixa baixa, o destaque fica nos tópicos */
+.leitura .capa-grande {
+    aspect-ratio: auto;
+    height: 140px;
+}
+
+.leitura .capa-grande:not(:has(img))::after {
+    font-size: 30px;
+}
