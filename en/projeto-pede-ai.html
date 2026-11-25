@@ -25,7 +25,7 @@
 
 <body>
 
-    <div class="pagina coluna">
+    <div class="pagina coluna leitura">
 
         <!-- topo -->
         <header class="intro">
@@ -35,6 +35,7 @@
             <p class="papel">From a manual process to a system in production</p>
             <p class="texto">An internal Sebrae/PR platform for placing orders with vendors hired through public tender. You pick the item, enter the measurements and the order comes out ready, with the contract price calculated by the system and everything stored in a database.</p>
             <p class="mono">work · sebrae/pr · 2026 · final version live</p>
+            <p class="mono links-projeto"><a href="https://github.com/cervejera/pede-ai/blob/main/README.en.md" target="_blank" rel="noopener">github: full documentation ↗</a> · <a href="https://github.com/cervejera/pede-ai/blob/main/docs/versoes.md" target="_blank" rel="noopener">release log ↗</a></p>
         </header>
 
         <!-- resumo pra quem lê rápido -->
@@ -47,56 +48,8 @@
         <div class="capa capa-grande" data-nome="pede.ai"></div>
 
         <section>
-            <div class="faixa"><h2>Context</h2></div>
-            <div class="post">
-                <p>Sebrae/PR's creative team produces materials for events and regional offices across the state: vinyl prints, banners, displays, stickers and design services. The team doesn't produce them itself: vendors hired through public tender do. Each one has a contract with a table of items, a Protheus code and a fixed price, per m² or per unit. Every order comes from that contract spreadsheet and goes into the production pipeline in Ummense.</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="faixa"><h2>How it was</h2></div>
-            <div class="post">
-                <p>To order a vinyl print, you had to:</p>
-                <ul class="entregas"><li><b>1.</b> open the contract spreadsheet and find the item;</li><li><b>2.</b> do the math by hand: width and height, plus bleed on each side, times quantity, times the price per m²;</li><li><b>3.</b> type up the order, the delivery label and the Ummense card;</li><li><b>4.</b> check that the cost center really belonged to the regional office asking, in a map of more than 3,000 cost centers.</li></ul>
-                <p>Design services were worse: the studio sent a quote as a PDF, and someone checked it line by line against the contract.</p>
-                <h2>The pain</h2>
-                <ul class="entregas"><li><b>Math errors:</b> a per-m² item with bleed has five steps, and each one is a chance to get the invoiced amount wrong.</li><li><b>Wrong cost center:</b> one office's expense landed in another office's budget, and nobody noticed at the time.</li><li><b>Rework:</b> the same data was typed three times, in the order, the label and Ummense.</li><li><b>No history:</b> the order only existed as the file that was sent. Repeating an order meant starting from scratch.</li></ul>
-            </div>
-        </section>
-
-        <section>
-            <div class="faixa"><h2>How Pede.ai solves it</h2></div>
-            <div class="aprendi-col">
-                <ul>
-                    <li><span class="termo">math errors</span><span>the server calculates from the contract; users only enter measurements and quantity</span></li>
-                    <li><span class="termo">wrong cost center</span><span>an immediate warning saying which regional office the cost center belongs to; you only continue by confirming, and that is recorded</span></li>
-                    <li><span class="termo">rework</span><span>one form produces the order and the label, and the card goes into the Ummense pipeline on its own</span></li>
-                    <li><span class="termo">no history</span><span>every order is in the database: download again, duplicate, cancel</span></li>
-                    <li><span class="termo">PDF quotes</span><span>the system reads the PDF and checks every line against the contract; if anything differs, the entry is blocked</span></li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <div class="faixa"><h2>What it does today</h2></div>
-            <div class="post">
-                <p><b>Print:</b> the order is built in a cart. For per-m² items, bleed is optional, with a single margin or one per side. Each item can ship to a different destination. If the cost center doesn't match the regional office, a warning appears, and you can only continue by confirming you've seen it. At the end you get a .zip with the order, the label and the entries for the management system.</p>
-                <p><b>Services:</b> the studio sends its quote as a PDF, Pede.ai reads the file and checks every line against the contract: item, code, price, subtotal and total. If anything doesn't match, the entry is blocked. I tested it with 8 real quotes in two different layouts: all 22 lines and all 8 totals were read correctly.</p>
-                <p>Both flows have individual logins, history, re-downloading files, duplicating and cancelling.</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="faixa"><h2>Where it started: the MVP</h2></div>
-            <div class="galeria g2">
-                <figure class="figura"><a href="../img/projetos/pedeai-st-novo.jpg" target="_blank"><img src="../img/projetos/pedeai-st-novo.jpg" alt="new order, in the Streamlit MVP" loading="lazy"></a><figcaption class="mono">new order, in the Streamlit MVP</figcaption></figure>
-                <figure class="figura"><a href="../img/projetos/pedeai-st-proposta.jpg" target="_blank"><img src="../img/projetos/pedeai-st-proposta.jpg" alt="importing a quote: every line checked against the contract" loading="lazy"></a><figcaption class="mono">importing a quote: every line checked against the contract</figcaption></figure>
-            </div>
-        </section>
-
-        <section>
-            <div class="faixa"><h2>The final version</h2></div>
-            <p class="texto recuo">The final interface, in React, went live on Nov 23 and replaced the MVP.</p>
+            <div class="faixa"><h2>Screens</h2></div>
+            <div class="post"><p>The final version, in React, live since Nov 23. Click to enlarge.</p></div>
             <div class="galeria g3">
                 <figure class="figura"><a href="../img/projetos/pedeai-entrar.jpg" target="_blank"><img src="../img/projetos/pedeai-entrar.jpg" alt="sign in: everyone with their own account" loading="lazy"></a><figcaption class="mono">sign in: everyone with their own account</figcaption></figure>
                 <figure class="figura"><a href="../img/projetos/pedeai-novo-pedido.jpg" target="_blank"><img src="../img/projetos/pedeai-novo-pedido.jpg" alt="new order, step 1: the details apply to every item" loading="lazy"></a><figcaption class="mono">new order, step 1: the details apply to every item</figcaption></figure>
@@ -107,97 +60,62 @@
         </section>
 
         <section>
-            <div class="faixa"><h2>Decisions that guide the system</h2></div>
+            <div class="faixa"><h2>From manual to system</h2></div>
+            <div class="post"><p>The creative team's materials are produced by vendors hired through public tender, each with a table of items and prices in its contract. Every order came from that spreadsheet, done by hand.</p></div>
+            <ul class="linhas">
+                <li><span class="termo">math errors</span><span><span class="antes">Before: width, height, bleed, quantity and price per m², all by hand.</span>Now the server calculates from the contract; people only enter measurements and quantity.</span></li>
+                <li><span class="termo">cost center</span><span><span class="antes">Before: one office's expense landed in another office's budget.</span>Now the warning says which office the cost center belongs to, and you only continue by confirming (it's recorded).</span></li>
+                <li><span class="termo">rework</span><span><span class="antes">Before: the same data typed in the order, the label and Ummense.</span>Now one form produces everything, and the card goes into the pipeline on its own.</span></li>
+                <li><span class="termo">PDF quotes</span><span><span class="antes">Before: checked line by line against the contract.</span>Now the system reads and checks them; any difference blocks the entry.</span></li>
+                <li><span class="termo">history</span><span><span class="antes">Before: the order only existed as the file that was sent.</span>Now everything is in the database: download again, duplicate, cancel.</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>What it does</h2></div>
+            <div class="post">
+                <ul class="entregas"><li><b>Print:</b> 3-step orders, the contract catalog, optional bleed and one destination per item.</li><li><b>Services:</b> reads the PDF quote and checks every line; tested with 8 real quotes, 100% correct.</li><li><b>Pipeline:</b> the order's card is created in Ummense on its own, one send per order.</li><li><b>Accounts:</b> individual logins, history and user administration.</li></ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>Decisions</h2></div>
             <ol class="aprendizados">
                 <li class="aprendizado surge">
                     <span class="mono numero">01</span>
                     <div>
                         <h3>Validate before polishing</h3>
-                        <p class="texto">The React version already existed, with login and a dashboard, and I still put Streamlit into production first. The day the services flow went live, the support team asked for a description and notes per item. It shipped the same day.</p>
+                        <p class="texto">The Streamlit MVP went to production first. Only after real use was validated did the final React version replace it, without changing a single rule, because every rule lives in the API.</p>
                     </div>
                 </li>
                 <li class="aprendizado surge">
                     <span class="mono numero">02</span>
                     <div>
-                        <h3>Rules in the backend, simple screens</h3>
-                        <p class="texto">All business rules live in the API. Streamlit only displays and submits. When the React version comes back, it plugs into the same routes and nothing is lost.</p>
+                        <h3>The price never comes from the user</h3>
+                        <p class="texto">The interface sends item and measurements; the server recalculates from the contract, in Decimal, and stores a snapshot of each item. A stress test found one cent missing on 0.1% of items, and the math changed.</p>
                     </div>
                 </li>
                 <li class="aprendizado surge">
                     <span class="mono numero">03</span>
                     <div>
-                        <h3>Prices never come from the user</h3>
-                        <p class="texto">The screen sends the item and the measurements. The server recalculates from the contract table and saves a snapshot of each item. If the table changes tomorrow, today's receipt is still correct.</p>
-                    </div>
-                </li>
-                <li class="aprendizado surge">
-                    <span class="mono numero">04</span>
-                    <div>
-                        <h3>Nothing gets deleted</h3>
-                        <p class="texto">Orders, items and events are insert-only, enforced by the database itself with triggers. Cancelling records a new event.</p>
-                    </div>
-                </li>
-                <li class="aprendizado surge">
-                    <span class="mono numero">05</span>
-                    <div>
-                        <h3>Business data outside the code</h3>
-                        <p class="texto">Prices, vendors and the cost center map live in data files. The price table is generated from the contracts spreadsheet as all or nothing: if one tab is broken, nothing is saved.</p>
-                    </div>
-                </li>
-                <li class="aprendizado surge">
-                    <span class="mono numero">06</span>
-                    <div>
-                        <h3>Layered security</h3>
-                        <p class="texto">Validation at the API boundary and again in the database. The API connects with a user that can only read and insert. Passwords stored with scrypt and sessions with signed tokens.</p>
+                        <h3>Nothing is deleted</h3>
+                        <p class="texto">Orders and events are insert-only, enforced by the database itself. The API uses a user that can only read and insert, and no data route is public.</p>
                     </div>
                 </li>
             </ol>
         </section>
 
         <section>
-            <div class="faixa"><h2>Measure before changing</h2></div>
-            <div class="post">
-                <p>Opening an order from the history took up to 8 seconds. I measured in production: routes without the database answered in 0.3 s, with the database in 2.7 s. The API is in the US and the database in São Paulo, and each new connection cost 1.2 s just for the security handshake. With a connection pool and session caching, it dropped to about 1.3 s. The test suite went from 274 s to 108 s.</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="faixa"><h2>Straight into the pipeline</h2></div>
-            <div class="post">
-                <p>Once a print order is saved, Pede.ai creates the card in Ummense's production pipeline on its own, with the title, the order in the description and the cost center tag. Ummense doesn't return an identifier and duplicates the card if the same request is sent twice, so the system records each send and never sends the same order twice. If Ummense is down, the order isn't affected.</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="faixa"><h2>Release log</h2></div>
-            <p class="texto recuo">Each version is a deploy to the server: 19 in six months, from the MVP to the final version.</p>
-            <div class="aprendi-col versoes">
-                <ul>
-                    <li><span class="termo mono">v1.1.3 · Nov 25</span><span class="mudanca"><span class="tipo-mudanca">change</span>cost center stored in full, with the suffix after the hyphen</span><span class="mudanca"><span class="tipo-mudanca">change</span>print order in the format the service team uses</span></li>
-                    <li><span class="termo mono">v1.1.2 · Nov 25</span><span class="mudanca"><span class="tipo-mudanca">fix</span>change-password window cut off at the top</span></li>
-                    <li><span class="termo mono">v1.1.1 · Nov 24</span><span class="mudanca"><span class="tipo-mudanca">change</span>shorter service quote</span></li>
-                    <li><span class="termo mono">v1.1 · Nov 23</span><span class="mudanca"><span class="tipo-mudanca">new</span>users tab for the administrator</span><span class="mudanca"><span class="tipo-mudanca">security</span>admin rights only from the server</span></li>
-                    <li><span class="termo mono">v1.0.1 · Nov 23</span><span class="mudanca"><span class="tipo-mudanca">change</span>cost center's regional office in the warning, bleed in centimeters</span><span class="mudanca"><span class="tipo-mudanca">new</span>real Ummense pipeline connected</span></li>
-                    <li><span class="termo mono">v1.0 · Nov 23</span><span class="mudanca"><span class="tipo-mudanca">new</span>final React version replaces the MVP</span><span class="mudanca"><span class="tipo-mudanca">security</span>session in a protected cookie, no public data routes and login lockout</span></li>
-                </ul>
-                <div class="versoes-extra" id="versoesAntigas">
-                    <ul>
-                    <li><span class="termo mono">v0.12 · Nov 19</span><span class="mudanca"><span class="tipo-mudanca">new</span>order becomes an Ummense card</span><span class="mudanca"><span class="tipo-mudanca">new</span>final-version prototype approved</span></li>
-                    <li><span class="termo mono">v0.11 · Oct 13</span><span class="mudanca"><span class="tipo-mudanca">new</span>per-item description and notes, the same day the service team asked</span></li>
-                    <li><span class="termo mono">v0.10 · Oct 13</span><span class="mudanca"><span class="tipo-mudanca">new</span>PDF quote reading; services flow live 3 weeks ahead of schedule</span></li>
-                    <li><span class="termo mono">v0.9 · Oct 13</span><span class="mudanca"><span class="tipo-mudanca">performance</span>orders opening in ~1.3 s, previously ~8 s</span></li>
-                    <li><span class="termo mono">v0.8 · Oct 8</span><span class="mudanca"><span class="tipo-mudanca">data</span>each vendor configured separately; all-or-nothing price table</span></li>
-                    <li><span class="termo mono">v0.7 · Oct 6</span><span class="mudanca"><span class="tipo-mudanca">new</span>individual logins and my orders</span><span class="mudanca"><span class="tipo-mudanca">fix</span>one cent short on 0.1% of items, plus 4 bugs</span></li>
-                    <li><span class="termo mono">v0.6 · Oct 2</span><span class="mudanca"><span class="tipo-mudanca">security</span>API key and a database user that can only read and insert</span></li>
-                    <li><span class="termo mono">v0.5 · Oct 2</span><span class="mudanca"><span class="tipo-mudanca">data</span>SQLite → PostgreSQL, with insert-only tables</span></li>
-                    <li><span class="termo mono">v0.4 · Oct 2</span><span class="mudanca"><span class="tipo-mudanca">new</span>label with one block per destination</span><span class="mudanca"><span class="tipo-mudanca">security</span>password out of the code</span></li>
-                    <li><span class="termo mono">v0.3 · Aug 25</span><span class="mudanca"><span class="tipo-mudanca">new</span>bleed, per-item destination and Ummense title</span><span class="mudanca"><span class="tipo-mudanca">fix</span>10 calculation and interface bugs</span></li>
-                    <li><span class="termo mono">v0.2 · May 29</span><span class="mudanca"><span class="tipo-mudanca">new</span>contract number on the order</span></li>
-                    <li><span class="termo mono">v0.1 · May 28</span><span class="mudanca"><span class="tipo-mudanca">new</span>MVP live, after 3 failed deploys</span></li>
-                    </ul>
-                </div>
-            </div>
-            <button class="ver-mais" type="button" id="verVersoes" aria-expanded="false" aria-controls="versoesAntigas"><span class="ver-mais-seta">&gt;</span> <span class="ver-mais-texto">see more</span></button>
+            <div class="faixa"><h2>Releases</h2></div>
+            <ul class="linhas">
+                <li><span class="mono termo">v0.1 · May 28</span><span>MVP live</span></li>
+                <li><span class="mono termo">v0.7 · Oct 6</span><span>database, security, login and history</span></li>
+                <li><span class="mono termo">v0.10 · Oct 13</span><span>PDF reading; services live 3 weeks ahead of schedule</span></li>
+                <li><span class="mono termo">v0.12 · Nov 19</span><span>automatic Ummense card</span></li>
+                <li><span class="mono termo">v1.0 · Nov 23</span><span>final React version replaces the MVP</span></li>
+                <li><span class="mono termo">v1.1.3 · Nov 25</span><span>adjustments requested in real use</span></li>
+            </ul>
+            <div class="post"><p>19 releases in six months. <a href="https://github.com/cervejera/pede-ai/blob/main/docs/versoes.md" target="_blank" rel="noopener">All of them on GitHub ↗</a> (in Portuguese)</p></div>
         </section>
 
         <section>
@@ -261,7 +179,6 @@
     <script src="../script/rodape.js"></script>
     <script src="../script/revela.js"></script>
     <script src="../script/imagens.js"></script>
-    <script src="../script/navegacao.js"></script>
     <script src="../script/projeto.js"></script>
 </body>
 

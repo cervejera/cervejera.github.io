@@ -3214,3 +3214,146 @@ html[data-tema="claro"] .idioma .tema .sol {
         font-size: 12.5px;
     }
 }
+
+/* ===== páginas de projeto: leitura confortável (25/11) ===== */
+.leitura .intro .texto,
+.leitura .post p {
+    max-width: 680px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--cb5b5b5);
+}
+
+.leitura .faixa h2 {
+    font-size: 19px;
+    color: var(--cf0f0f0);
+}
+
+.leitura .resumo .mono {
+    font-size: 12.5px;
+}
+
+.leitura .resumo p:last-child {
+    font-size: 15.5px;
+    line-height: 1.6;
+}
+
+.leitura .post {
+    padding-bottom: 36px;
+}
+
+.leitura .entregas li {
+    max-width: 680px;
+    padding: 5px 0 5px 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--cb5b5b5);
+}
+
+.leitura .entregas li::before {
+    top: 17px;
+}
+
+.leitura .aprendi-col li {
+    padding: 14px 0;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--cb5b5b5);
+}
+
+.leitura .termo {
+    font-size: 16px;
+}
+
+.leitura .aprendizado {
+    padding: 20px 0;
+}
+
+.leitura .aprendizado h3 {
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+.leitura .aprendizado .texto {
+    max-width: 680px;
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: var(--cb5b5b5);
+}
+
+.leitura .figura figcaption {
+    font-size: 13.5px;
+}
+
+/* links do projeto logo abaixo do topo */
+.links-projeto a {
+    color: var(--c3ecf8e);
+}
+
+.links-projeto a:hover {
+    text-decoration: underline;
+}
+
+/* lista de duas colunas: rótulo à esquerda, texto à direita */
+.linhas {
+    list-style: none;
+    margin: 0;
+    padding: 8px var(--lado) 32px;
+}
+
+.linhas li {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 680px);
+    gap: 24px;
+    padding: 14px 0;
+    border-top: 1px dashed var(--c222222);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--cb5b5b5);
+}
+
+.linhas li:first-child {
+    border-top: none;
+}
+
+.linhas .termo {
+    font-weight: 500;
+}
+
+.linhas .mono.termo {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--c3ecf8e);
+}
+
+.linhas .antes {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--c8a8a8a);
+    font-size: 15px;
+}
+
+@media (max-width: 600px) {
+    .linhas li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .leitura .faixa h2 {
+        font-size: 17px;
+    }
+}
+
+.leitura .post p a {
+    color: var(--c3ecf8e);
+}
+
+.leitura .post p a:hover {
+    text-decoration: underline;
+}
+
+/* frase de abertura colada na lista ou na galeria logo abaixo */
+.leitura .post + .linhas,
+.leitura .post + .galeria {
+    margin-top: -28px;
+}
