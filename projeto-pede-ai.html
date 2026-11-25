@@ -88,7 +88,7 @@
 
         <section>
             <div class="faixa"><h2>Onde começou: o MVP</h2></div>
-            <div class="galeria g1">
+            <div class="galeria g2">
                 <figure class="figura"><a href="img/projetos/pedeai-st-novo.jpg" target="_blank"><img src="img/projetos/pedeai-st-novo.jpg" alt="novo pedido, no MVP em Streamlit" loading="lazy"></a><figcaption class="mono">novo pedido, no MVP em Streamlit</figcaption></figure>
                 <figure class="figura"><a href="img/projetos/pedeai-st-proposta.jpg" target="_blank"><img src="img/projetos/pedeai-st-proposta.jpg" alt="importar proposta: cada linha conferida com o contrato" loading="lazy"></a><figcaption class="mono">importar proposta: cada linha conferida com o contrato</figcaption></figure>
             </div>
@@ -97,7 +97,7 @@
         <section>
             <div class="faixa"><h2>A versão final</h2></div>
             <p class="texto recuo">A interface final, em React, entrou no ar em 23/11 e substituiu o MVP.</p>
-            <div class="galeria g1">
+            <div class="galeria g3">
                 <figure class="figura"><a href="img/projetos/pedeai-entrar.jpg" target="_blank"><img src="img/projetos/pedeai-entrar.jpg" alt="entrar: cada pessoa com a sua conta" loading="lazy"></a><figcaption class="mono">entrar: cada pessoa com a sua conta</figcaption></figure>
                 <figure class="figura"><a href="img/projetos/pedeai-novo-pedido.jpg" target="_blank"><img src="img/projetos/pedeai-novo-pedido.jpg" alt="novo pedido, etapa 1: os dados valem para todos os itens" loading="lazy"></a><figcaption class="mono">novo pedido, etapa 1: os dados valem para todos os itens</figcaption></figure>
                 <figure class="figura"><a href="img/projetos/pedeai-itens.jpg" target="_blank"><img src="img/projetos/pedeai-itens.jpg" alt="etapa 2: vitrine do contrato e carrinho ao lado" loading="lazy"></a><figcaption class="mono">etapa 2: vitrine do contrato e carrinho ao lado</figcaption></figure>
@@ -155,14 +155,6 @@
         </section>
 
         <section>
-            <div class="faixa"><h2>O centavo que sumia</h2></div>
-            <div class="post">
-                <p>Escrevi um teste de estresse que monta centenas de carrinhos aleatórios e confere cada total com uma conta exata feita de outro jeito. Ele achou que cerca de 0,1% dos itens saíam 1 centavo abaixo: 540.251,415 virava ,41 em vez de ,42. A conta era em <code>float</code>, que não representa decimal exato. Passei tudo pra <code>Decimal</code>, com arredondamento comercial só no total do item.</p>
-                <p>O mesmo teste achou uma medida de 1,2345 m cobrada assim mas gravada como 1,235 m, e um caractere invisível que derrubava a gravação. Os testes ponta a ponta, rodando o Streamlit real contra a API real, acharam mais dois: o carrinho usando valores da tela anterior e a duplicação devolvendo o número do pedido antigo.</p>
-            </div>
-        </section>
-
-        <section>
             <div class="faixa"><h2>Medir antes de mexer</h2></div>
             <div class="post">
                 <p>Abrir um pedido no histórico levava até 8 segundos. Medi em produção: rotas sem banco respondiam em 0,3 s, com banco em 2,7 s. A API está nos EUA e o banco em São Paulo, e cada conexão nova custava 1,2 s só pra negociar segurança. Com pool de conexões e cache na sessão, caiu pra cerca de 1,3 s. A suíte de testes caiu de 274 s pra 108 s.</p>
@@ -173,13 +165,6 @@
             <div class="faixa"><h2>Direto para a esteira</h2></div>
             <div class="post">
                 <p>Registrado o pedido de impressão, o Pede.ai cria sozinho o card na esteira de produção do Ummense, com o título, o pedido na descrição e a tag do centro de custo. O Ummense não devolve identificador e duplica o card se o envio se repetir, então o sistema registra o envio e nunca manda o mesmo pedido duas vezes. Se o Ummense estiver fora do ar, o pedido não é afetado.</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="faixa"><h2>Trabalhando com IA</h2></div>
-            <div class="post">
-                <p>Boa parte do projeto foi feita em par com o Claude Code. O que mais funcionou foi um <code>CLAUDE.md</code> na raiz do repositório, com as regras de negócio, o que nunca pode ser feito, a ordem do deploy e o backlog. A IA acelerou muito os testes. As decisões de negócio continuaram humanas: quando faltou uma resposta do atendimento, a regra foi recusar com aviso, nunca inventar um valor.</p>
             </div>
         </section>
 

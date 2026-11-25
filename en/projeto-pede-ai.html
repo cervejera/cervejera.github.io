@@ -88,7 +88,7 @@
 
         <section>
             <div class="faixa"><h2>Where it started: the MVP</h2></div>
-            <div class="galeria g1">
+            <div class="galeria g2">
                 <figure class="figura"><a href="../img/projetos/pedeai-st-novo.jpg" target="_blank"><img src="../img/projetos/pedeai-st-novo.jpg" alt="new order, in the Streamlit MVP" loading="lazy"></a><figcaption class="mono">new order, in the Streamlit MVP</figcaption></figure>
                 <figure class="figura"><a href="../img/projetos/pedeai-st-proposta.jpg" target="_blank"><img src="../img/projetos/pedeai-st-proposta.jpg" alt="importing a quote: every line checked against the contract" loading="lazy"></a><figcaption class="mono">importing a quote: every line checked against the contract</figcaption></figure>
             </div>
@@ -97,7 +97,7 @@
         <section>
             <div class="faixa"><h2>The final version</h2></div>
             <p class="texto recuo">The final interface, in React, went live on Nov 23 and replaced the MVP.</p>
-            <div class="galeria g1">
+            <div class="galeria g3">
                 <figure class="figura"><a href="../img/projetos/pedeai-entrar.jpg" target="_blank"><img src="../img/projetos/pedeai-entrar.jpg" alt="sign in: everyone with their own account" loading="lazy"></a><figcaption class="mono">sign in: everyone with their own account</figcaption></figure>
                 <figure class="figura"><a href="../img/projetos/pedeai-novo-pedido.jpg" target="_blank"><img src="../img/projetos/pedeai-novo-pedido.jpg" alt="new order, step 1: the details apply to every item" loading="lazy"></a><figcaption class="mono">new order, step 1: the details apply to every item</figcaption></figure>
                 <figure class="figura"><a href="../img/projetos/pedeai-itens.jpg" target="_blank"><img src="../img/projetos/pedeai-itens.jpg" alt="step 2: contract catalog with the cart alongside" loading="lazy"></a><figcaption class="mono">step 2: contract catalog with the cart alongside</figcaption></figure>
@@ -155,14 +155,6 @@
         </section>
 
         <section>
-            <div class="faixa"><h2>The disappearing cent</h2></div>
-            <div class="post">
-                <p>I wrote a stress test that builds hundreds of random carts and checks every total against an exact calculation done another way. It found that about 0.1% of items came out 1 cent short: 540,251.415 became .41 instead of .42. The math used <code>float</code>, which can't represent decimals exactly. I moved everything to <code>Decimal</code>, with standard rounding only on each item's total.</p>
-                <p>The same test found a 1.2345 m measurement charged as such but saved as 1.235 m, and an invisible character that broke saving. The end-to-end tests, running the real Streamlit app against the real API, found two more: the cart using values from the previous screen, and duplication returning the old order number.</p>
-            </div>
-        </section>
-
-        <section>
             <div class="faixa"><h2>Measure before changing</h2></div>
             <div class="post">
                 <p>Opening an order from the history took up to 8 seconds. I measured in production: routes without the database answered in 0.3 s, with the database in 2.7 s. The API is in the US and the database in São Paulo, and each new connection cost 1.2 s just for the security handshake. With a connection pool and session caching, it dropped to about 1.3 s. The test suite went from 274 s to 108 s.</p>
@@ -173,13 +165,6 @@
             <div class="faixa"><h2>Straight into the pipeline</h2></div>
             <div class="post">
                 <p>Once a print order is saved, Pede.ai creates the card in Ummense's production pipeline on its own, with the title, the order in the description and the cost center tag. Ummense doesn't return an identifier and duplicates the card if the same request is sent twice, so the system records each send and never sends the same order twice. If Ummense is down, the order isn't affected.</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="faixa"><h2>Working with AI</h2></div>
-            <div class="post">
-                <p>A good part of the project was pair-programmed with Claude Code. What worked best was a <code>CLAUDE.md</code> file at the root of the repository, with the business rules, what must never be done, the deploy order and the backlog. AI sped up testing a lot. Business decisions stayed human: when the support team hadn't answered a question, the rule was to refuse with a warning, never to make up a value.</p>
             </div>
         </section>
 
