@@ -3167,3 +3167,49 @@ html[data-tema="claro"] .idioma .tema .sol {
         padding-left: 50px;
     }
 }
+
+/* projeto pede.ai: registro de versões (25/11) */
+.versoes li {
+    gap: 6px;
+}
+
+.versoes .termo {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.mudanca {
+    display: block;
+}
+
+/* tipo da mudança: quadrado verde de baixa opacidade, igual ao tipo dos projetos */
+.tipo-mudanca {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 1px 6px;
+    border: 1px solid rgba(var(--verde-rgb), .4);
+    background-color: rgba(var(--verde-rgb), .1);
+    color: var(--c5fdba6);
+    font-size: 11px;
+}
+
+/* versões antigas: cortadas com degradê até o "ver mais", como as experiências */
+.versoes-extra {
+    position: relative;
+    max-height: 150px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+
+.versoes-extra.aberto {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+@media (max-width: 600px) {
+    .versoes .termo,
+    .tipo-mudanca {
+        font-size: 12.5px;
+    }
+}

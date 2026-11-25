@@ -34,23 +34,46 @@
             <h1>Pede.ai</h1>
             <p class="papel">From a manual process to a system in production</p>
             <p class="texto">An internal Sebrae/PR platform for placing orders with vendors hired through public tender. You pick the item, enter the measurements and the order comes out ready, with the contract price calculated by the system and everything stored in a database.</p>
-            <p class="mono">work · sebrae/pr · 2026 · in production with beta testers</p>
+            <p class="mono">work · sebrae/pr · 2026 · final version live</p>
         </header>
 
         <!-- resumo pra quem lê rápido -->
         <div class="resumo">
             <div><p class="mono">problem</p><p>Ordering from contracted vendors was manual: area and bleed calculated by hand, cost centers mixed up between regional offices, and no history.</p></div>
             <div><p class="mono">my role</p><p>I designed and built the system, from the business rules in the API to the database, the tests and the interface.</p></div>
-            <div><p class="mono">result</p><p>In production with beta testers. 168 automated tests, orders opening in 1.3 s (previously up to 8 s), and the services flow delivered 3 weeks ahead of schedule.</p></div>
+            <div><p class="mono">result</p><p>Final React version live since Nov 23, after 19 releases. 378 automated tests, orders opening in 1.3 s (previously up to 8 s), and the services flow delivered 3 weeks ahead of schedule.</p></div>
         </div>
 
         <div class="capa capa-grande" data-nome="pede.ai"></div>
 
         <section>
-            <div class="faixa"><h2>The problem</h2></div>
+            <div class="faixa"><h2>Context</h2></div>
             <div class="post">
-                <p>In the creative team, ordering a vinyl print, a banner or a design service from a contracted vendor was tedious. You opened the contract spreadsheet, found the item, did the math by hand (area, bleed, quantity, price per m²), typed up the order and the label, and then checked that the cost center belonged to the right regional office.</p>
-                <ul class="entregas"><li><b>Math errors:</b> a per-m² order with bleed has several steps, and each one is a chance to get it wrong.</li><li><b>Cost center errors:</b> one office's cost center ended up on another office's order.</li><li><b>No history:</b> the order only existed as the file that was sent.</li></ul>
+                <p>Sebrae/PR's creative team produces materials for events and regional offices across the state: vinyl prints, banners, displays, stickers and design services. The team doesn't produce them itself: vendors hired through public tender do. Each one has a contract with a table of items, a Protheus code and a fixed price, per m² or per unit. Every order comes from that contract spreadsheet and goes into the production pipeline in Ummense.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>How it was</h2></div>
+            <div class="post">
+                <p>To order a vinyl print, you had to:</p>
+                <ul class="entregas"><li><b>1.</b> open the contract spreadsheet and find the item;</li><li><b>2.</b> do the math by hand: width and height, plus bleed on each side, times quantity, times the price per m²;</li><li><b>3.</b> type up the order, the delivery label and the Ummense card;</li><li><b>4.</b> check that the cost center really belonged to the regional office asking, in a map of more than 3,000 cost centers.</li></ul>
+                <p>Design services were worse: the studio sent a quote as a PDF, and someone checked it line by line against the contract.</p>
+                <h2>The pain</h2>
+                <ul class="entregas"><li><b>Math errors:</b> a per-m² item with bleed has five steps, and each one is a chance to get the invoiced amount wrong.</li><li><b>Wrong cost center:</b> one office's expense landed in another office's budget, and nobody noticed at the time.</li><li><b>Rework:</b> the same data was typed three times, in the order, the label and Ummense.</li><li><b>No history:</b> the order only existed as the file that was sent. Repeating an order meant starting from scratch.</li></ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="faixa"><h2>How Pede.ai solves it</h2></div>
+            <div class="aprendi-col">
+                <ul>
+                    <li><span class="termo">math errors</span><span>the server calculates from the contract; users only enter measurements and quantity</span></li>
+                    <li><span class="termo">wrong cost center</span><span>an immediate warning saying which regional office the cost center belongs to; you only continue by confirming, and that is recorded</span></li>
+                    <li><span class="termo">rework</span><span>one form produces the order and the label, and the card goes into the Ummense pipeline on its own</span></li>
+                    <li><span class="termo">no history</span><span>every order is in the database: download again, duplicate, cancel</span></li>
+                    <li><span class="termo">PDF quotes</span><span>the system reads the PDF and checks every line against the contract; if anything differs, the entry is blocked</span></li>
+                </ul>
             </div>
         </section>
 
@@ -64,7 +87,7 @@
         </section>
 
         <section>
-            <div class="faixa"><h2>Where it is today</h2></div>
+            <div class="faixa"><h2>Where it started: the MVP</h2></div>
             <div class="galeria g1">
                 <figure class="figura"><a href="../img/projetos/pedeai-st-novo.jpg" target="_blank"><img src="../img/projetos/pedeai-st-novo.jpg" alt="new order, in the Streamlit MVP" loading="lazy"></a><figcaption class="mono">new order, in the Streamlit MVP</figcaption></figure>
                 <figure class="figura"><a href="../img/projetos/pedeai-st-proposta.jpg" target="_blank"><img src="../img/projetos/pedeai-st-proposta.jpg" alt="importing a quote: every line checked against the contract" loading="lazy"></a><figcaption class="mono">importing a quote: every line checked against the contract</figcaption></figure>
@@ -72,12 +95,14 @@
         </section>
 
         <section>
-            <div class="faixa"><h2>Where we want to go</h2></div>
-            <p class="texto recuo">The interface for the final version, in React. It's paused on purpose until real use of the MVP shows the right flow.</p>
+            <div class="faixa"><h2>The final version</h2></div>
+            <p class="texto recuo">The final interface, in React, went live on Nov 23 and replaced the MVP.</p>
             <div class="galeria g1">
-                <figure class="figura"><a href="../img/projetos/pedeai-novo-pedido.jpg" target="_blank"><img src="../img/projetos/pedeai-novo-pedido.jpg" alt="new order" loading="lazy"></a><figcaption class="mono">new order</figcaption></figure>
-                <figure class="figura"><a href="../img/projetos/pedeai-itens.jpg" target="_blank"><img src="../img/projetos/pedeai-itens.jpg" alt="items and cart" loading="lazy"></a><figcaption class="mono">items and cart</figcaption></figure>
-                <figure class="figura"><a href="../img/projetos/pedeai-meus-pedidos.jpg" target="_blank"><img src="../img/projetos/pedeai-meus-pedidos.jpg" alt="my orders" loading="lazy"></a><figcaption class="mono">my orders</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/pedeai-entrar.jpg" target="_blank"><img src="../img/projetos/pedeai-entrar.jpg" alt="sign in: everyone with their own account" loading="lazy"></a><figcaption class="mono">sign in: everyone with their own account</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/pedeai-novo-pedido.jpg" target="_blank"><img src="../img/projetos/pedeai-novo-pedido.jpg" alt="new order, step 1: the details apply to every item" loading="lazy"></a><figcaption class="mono">new order, step 1: the details apply to every item</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/pedeai-itens.jpg" target="_blank"><img src="../img/projetos/pedeai-itens.jpg" alt="step 2: contract catalog with the cart alongside" loading="lazy"></a><figcaption class="mono">step 2: contract catalog with the cart alongside</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/pedeai-proposta.jpg" target="_blank"><img src="../img/projetos/pedeai-proposta.jpg" alt="import quote: every line checked against the contract" loading="lazy"></a><figcaption class="mono">import quote: every line checked against the contract</figcaption></figure>
+                <figure class="figura"><a href="../img/projetos/pedeai-meus-pedidos.jpg" target="_blank"><img src="../img/projetos/pedeai-meus-pedidos.jpg" alt="my orders: amounts saved on the day and a timeline" loading="lazy"></a><figcaption class="mono">my orders: amounts saved on the day and a timeline</figcaption></figure>
             </div>
         </section>
 
@@ -145,6 +170,13 @@
         </section>
 
         <section>
+            <div class="faixa"><h2>Straight into the pipeline</h2></div>
+            <div class="post">
+                <p>Once a print order is saved, Pede.ai creates the card in Ummense's production pipeline on its own, with the title, the order in the description and the cost center tag. Ummense doesn't return an identifier and duplicates the card if the same request is sent twice, so the system records each send and never sends the same order twice. If Ummense is down, the order isn't affected.</p>
+            </div>
+        </section>
+
+        <section>
             <div class="faixa"><h2>Working with AI</h2></div>
             <div class="post">
                 <p>A good part of the project was pair-programmed with Claude Code. What worked best was a <code>CLAUDE.md</code> file at the root of the repository, with the business rules, what must never be done, the deploy order and the backlog. AI sped up testing a lot. Business decisions stayed human: when the support team hadn't answered a question, the rule was to refuse with a warning, never to make up a value.</p>
@@ -152,11 +184,35 @@
         </section>
 
         <section>
-            <div class="faixa"><h2>Timeline</h2></div>
-            <div class="post">
-
-                <ul class="entregas"><li><b>May:</b> first version of the MVP live</li><li><b>August:</b> bleed, one destination per item and a big round of fixes</li><li><b>Early October:</b> a real database, security, stress tests, login and history</li><li><b>October 13:</b> services flow with PDF reading in production, three weeks ahead of schedule</li></ul>
+            <div class="faixa"><h2>Release log</h2></div>
+            <p class="texto recuo">Each version is a deploy to the server: 19 in six months, from the MVP to the final version.</p>
+            <div class="aprendi-col versoes">
+                <ul>
+                    <li><span class="termo mono">v1.1.3 · Nov 25</span><span class="mudanca"><span class="tipo-mudanca">change</span>cost center stored in full, with the suffix after the hyphen</span><span class="mudanca"><span class="tipo-mudanca">change</span>print order in the format the service team uses</span></li>
+                    <li><span class="termo mono">v1.1.2 · Nov 25</span><span class="mudanca"><span class="tipo-mudanca">fix</span>change-password window cut off at the top</span></li>
+                    <li><span class="termo mono">v1.1.1 · Nov 24</span><span class="mudanca"><span class="tipo-mudanca">change</span>shorter service quote</span></li>
+                    <li><span class="termo mono">v1.1 · Nov 23</span><span class="mudanca"><span class="tipo-mudanca">new</span>users tab for the administrator</span><span class="mudanca"><span class="tipo-mudanca">security</span>admin rights only from the server</span></li>
+                    <li><span class="termo mono">v1.0.1 · Nov 23</span><span class="mudanca"><span class="tipo-mudanca">change</span>cost center's regional office in the warning, bleed in centimeters</span><span class="mudanca"><span class="tipo-mudanca">new</span>real Ummense pipeline connected</span></li>
+                    <li><span class="termo mono">v1.0 · Nov 23</span><span class="mudanca"><span class="tipo-mudanca">new</span>final React version replaces the MVP</span><span class="mudanca"><span class="tipo-mudanca">security</span>session in a protected cookie, no public data routes and login lockout</span></li>
+                </ul>
+                <div class="versoes-extra" id="versoesAntigas">
+                    <ul>
+                    <li><span class="termo mono">v0.12 · Nov 19</span><span class="mudanca"><span class="tipo-mudanca">new</span>order becomes an Ummense card</span><span class="mudanca"><span class="tipo-mudanca">new</span>final-version prototype approved</span></li>
+                    <li><span class="termo mono">v0.11 · Oct 13</span><span class="mudanca"><span class="tipo-mudanca">new</span>per-item description and notes, the same day the service team asked</span></li>
+                    <li><span class="termo mono">v0.10 · Oct 13</span><span class="mudanca"><span class="tipo-mudanca">new</span>PDF quote reading; services flow live 3 weeks ahead of schedule</span></li>
+                    <li><span class="termo mono">v0.9 · Oct 13</span><span class="mudanca"><span class="tipo-mudanca">performance</span>orders opening in ~1.3 s, previously ~8 s</span></li>
+                    <li><span class="termo mono">v0.8 · Oct 8</span><span class="mudanca"><span class="tipo-mudanca">data</span>each vendor configured separately; all-or-nothing price table</span></li>
+                    <li><span class="termo mono">v0.7 · Oct 6</span><span class="mudanca"><span class="tipo-mudanca">new</span>individual logins and my orders</span><span class="mudanca"><span class="tipo-mudanca">fix</span>one cent short on 0.1% of items, plus 4 bugs</span></li>
+                    <li><span class="termo mono">v0.6 · Oct 2</span><span class="mudanca"><span class="tipo-mudanca">security</span>API key and a database user that can only read and insert</span></li>
+                    <li><span class="termo mono">v0.5 · Oct 2</span><span class="mudanca"><span class="tipo-mudanca">data</span>SQLite → PostgreSQL, with insert-only tables</span></li>
+                    <li><span class="termo mono">v0.4 · Oct 2</span><span class="mudanca"><span class="tipo-mudanca">new</span>label with one block per destination</span><span class="mudanca"><span class="tipo-mudanca">security</span>password out of the code</span></li>
+                    <li><span class="termo mono">v0.3 · Aug 25</span><span class="mudanca"><span class="tipo-mudanca">new</span>bleed, per-item destination and Ummense title</span><span class="mudanca"><span class="tipo-mudanca">fix</span>10 calculation and interface bugs</span></li>
+                    <li><span class="termo mono">v0.2 · May 29</span><span class="mudanca"><span class="tipo-mudanca">new</span>contract number on the order</span></li>
+                    <li><span class="termo mono">v0.1 · May 28</span><span class="mudanca"><span class="tipo-mudanca">new</span>MVP live, after 3 failed deploys</span></li>
+                    </ul>
+                </div>
             </div>
+            <button class="ver-mais" type="button" id="verVersoes" aria-expanded="false" aria-controls="versoesAntigas"><span class="ver-mais-seta">&gt;</span> <span class="ver-mais-texto">see more</span></button>
         </section>
 
         <section>
@@ -169,7 +225,7 @@
                         <li><span class="termo">FastAPI routes</span><span>business rules in one place</span></li>
                         <li><span class="termo">PostgreSQL triggers</span><span>insert-only tables</span></li>
                         <li><span class="termo">Connection pooling</span><span>less time handshaking with the database</span></li>
-                        <li><span class="termo">Stress and end-to-end tests</span><span>168 tests in 9 files, with random data</span></li>
+                        <li><span class="termo">Stress and end-to-end tests</span><span>378 tests in 13 files, with random data</span></li>
                         <li><span class="termo">scrypt and signed tokens</span><span>passwords and sessions</span></li>
                     </ul>
                 </div>
@@ -177,10 +233,10 @@
                     <p class="mono">tools</p>
                     <ul>
                         <li><span class="termo">Python and FastAPI</span><span>API, on Render</span></li>
-                        <li><span class="termo">Streamlit</span><span>MVP in production</span></li>
+                        <li><span class="termo">Streamlit</span><span>MVP, the first version</span></li>
                         <li><span class="termo">PostgreSQL on Supabase</span><span>database</span></li>
                         <li><span class="termo">pytest</span><span>tests</span></li>
-                        <li><span class="termo">React and Vite</span><span>final version, paused</span></li>
+                        <li><span class="termo">React and Vite</span><span>final version, live</span></li>
                         <li><span class="termo">Claude Code</span><span>pair programmer, guided by CLAUDE.md</span></li>
                     </ul>
                 </div>
@@ -220,6 +276,7 @@
     <script src="../script/rodape.js"></script>
     <script src="../script/revela.js"></script>
     <script src="../script/imagens.js"></script>
+    <script src="../script/navegacao.js"></script>
     <script src="../script/projeto.js"></script>
 </body>
 

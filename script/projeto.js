@@ -85,5 +85,28 @@ document.addEventListener('DOMContentLoaded', function () {
         vigiaGrafico.observe(caixaGrafico);
     }
 
+    // versões antigas: "ver mais" abre (usa o navegacao.js)
+    const versoesAntigas = document.getElementById('versoesAntigas');
+    const botaoVersoes = document.getElementById('verVersoes');
+    if (versoesAntigas && botaoVersoes && window.nav) {
+        const EN = document.documentElement.lang === 'en';
+        versoesAntigas.inert = true;
+        botaoVersoes.addEventListener('click', function () {
+            const abrir = !versoesAntigas.classList.contains('aberto');
+            botaoVersoes.setAttribute('aria-expanded', abrir);
+            botaoVersoes.querySelector('.ver-mais-texto').textContent = abrir ? (EN ? 'see less' : 'ver menos') : (EN ? 'see more' : 'ver mais');
+            versoesAntigas.inert = !abrir;
+            if (abrir) {
+                versoesAntigas.classList.add('aberto');
+                nav.altura(versoesAntigas, versoesAntigas.scrollHeight, true);
+            } else {
+                // fecha segurando o botão no lugar
+                nav.ancorar(botaoVersoes);
+                versoesAntigas.classList.remove('aberto');
+                nav.altura(versoesAntigas, 150, false);
+            }
+        });
+    }
+
     // a entrada dos blocos fica no revela.js
 });
